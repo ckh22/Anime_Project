@@ -2,10 +2,9 @@
 import colors from 'colors';
 import dotenv from 'dotenv';
 import express from 'express';
-import morgan from 'morgan';
 import path from 'path';
 
-dotenv.congif();
+dotenv.config();
 
 const app = express();
 
