@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Studio() {
+const Animes = () => {
     return (
         <div>
-            Studio Page
+            Animes
         </div>
     )
 }
+
+export default Animes
