@@ -1,19 +1,29 @@
-import Anime from './Pages/Anime/Anime'
-import Studio from './Pages/Studio/Studio'
-import Character from './Pages/Character/Character'
+import Animes from './Pages/Animes/Animes'
+import Studios from './Pages/Studios/Studios'
+import Characters from './Pages/Characters/Characters'
 import Homepage from './Pages/Homepage/Homepage'
 import Navbar from './Navbar/Navbar'
+import {Fragment} from 'react'
+import { Route } from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <Anime />
-      <Studio />
-      <Character />
-      <Homepage />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Navbar/>
+            <Route exact path='/'
+                component={Homepage}/>
+            <Route path={"/(.+)"}
+                render={
+                    () => (
+                        <Fragment>
+                          <Route exact path='/studios' component={Studios} />
+                          <Route exact path='/animes' component={Animes} />
+                          <Route exact path='/characters' component={Characters} />
+                        </Fragment>
+                    )
+                }/>
+        </div>
+    );
 }
 
 export default App;

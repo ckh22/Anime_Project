@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Anime() {
+const Anime = () => {
     return (
         <div>
-            Anime Page
+            Anime
         </div>
     )
 }
+
+export default Anime

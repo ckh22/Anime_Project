@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Character() {
+const Studio = () => {
     return (
         <div>
-            Character Page
+            Studio
         </div>
     )
 }
+
+export default Studio

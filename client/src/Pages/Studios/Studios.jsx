@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Homepage() {
+const Studios = () => {
     return (
         <div>
-            Homepage
+            Studios
         </div>
     )
 }
+
+export default Studios
