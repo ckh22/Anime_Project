@@ -1,7 +1,17 @@
+import Anime from './Pages/Anime/Anime'
+import Studio from './Pages/Studio/Studio'
+import Character from './Pages/Character/Character'
+import Homepage from './Pages/Homepage/Homepage'
+import Navbar from './Navbar/Navbar'
+
 function App() {
   return (
     <div className="App">
-      Hello World
+      <Navbar />
+      <Anime />
+      <Studio />
+      <Character />
+      <Homepage />
     </div>
   );
 }
