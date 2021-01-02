@@ -12,4 +12,4 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`Server runnin in ${process.env.NODE_ENV} mode on ${PORT}`.red.bold));
+app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on ${PORT}`.red.bold));

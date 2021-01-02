@@ -39,7 +39,7 @@ const animeSchema = new Schema(
 				required: false,
 			},
 			budget: {
-				tyep: Number,
+				type: Number,
 				requred: false,
 			},
 		},
