@@ -11,6 +11,10 @@ import animeRoutes from './routes/animeRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
 
+// Users
+import users from './data/users.js';
+import anime from './data/anime.js';
+
 dotenv.config();
 
 connectDB();
@@ -21,13 +25,17 @@ app.use(express.json());
 
 // Initial Test Route
 app.get('/', (req, res) => {
-	res.send('API running nicely boss'.green.bold);
+	res.send('API running nicely boss');
 });
 
 // Routes
-app.use('/api/users', userRoutes);
-app.use('/api/anime', animeRoutes);
-app.use('/api/profile', profileRoutes);
+// app.use("/api/users", require("./routes/api/users"));
+app.get('/api/users', (req, res) => {
+	res.send(users);
+});
+app.get('/api/anime', (req, res) => {
+	res.send(anime);
+});
 
 // Middleware
 app.use(notFound);

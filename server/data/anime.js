@@ -1,4 +1,4 @@
-const users = [
+const anime = [
 	{
 		firstName: 'Admin',
 		lastName: 'User',
@@ -20,4 +20,4 @@ const users = [
 	},
 ];
 
-export default users;
+export default anime;
