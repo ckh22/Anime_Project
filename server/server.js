@@ -31,9 +31,7 @@ app.get('/', (req, res) => {
 // Routes
 // app.use("/api/users", require("./routes/api/users"));
 app.use('/api/anime', animeRoutes);
-app.get('/api/anime', (req, res) => {
-	res.send(anime);
-});
+app.use('/api/users', userRoutes);
 
 // Middleware
 app.use(notFound);
