@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import users from './data/users.js';
-import anime from './data/animeData.js';
+import animes from './data/animeData.js';
 import User from './models/userModel.js';
 import Anime from './models/animeModel.js';
 import connectDB from './config/database.js';
