@@ -1,13 +1,42 @@
-.main {
-    height: 100vh;
-    background: rgb(34, 34, 59);
-}
-
 .one {
     padding-top: 75px;
-    margin-left: 5%;
+    height: 93.22304vh;
+    background: rgb(7, 7, 7);
+}
+
+.leaderboard-container {
+    width: 45%;
 }
 
 .leaderboard {
-    width: 60%;
+    margin-left: 25%;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.grid-area {
+    width: 40%;
+    margin-left: 10%;
+    display: grid;
+    margin-top: 10%;
+}
+
+.grid-area Button {
+    width: 150px;
+    height: 50px;
+    margin: 0 auto;
+    color: white;
+    background: rgb(78, 76, 168);
+}
+.grid-area p {
+    text-align: center;
+    color:rgb(255, 255, 255)
+}
+
+.two {
+    height: 100vh;
+    background: rgb(7, 7, 7);
 }
