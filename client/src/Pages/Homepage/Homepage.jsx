@@ -1,7 +1,21 @@
 import React, {Fragment} from 'react'
 import './Homepage.css'
-import {Button} from '@material-ui/core'
+import {Button, Card, CardHeader} from '@material-ui/core'
+
 import Leaderboard from '../../Components/Statistics/Leaderboard'
+
+  
+
+const titles = [
+    'sdaidsua',
+    'dsubaidsbuad',
+    'sdaidsua',
+    'dsubaidsbuad',
+    'sdaidsua',
+    'dsubaidsbuad',
+    'sdaidsua',
+    'dsubaidsbuad',
+]
 
 export default function Homepage() {
     return (
@@ -24,12 +38,23 @@ export default function Homepage() {
 
                 </div>
             </section>
-            <section className="two"></section>
+            <section className="two">
+                <div className="flex-two">
+                    <p>Active Pages</p>
+                    <div className="grid-two">
+                        {titles.map((title) => (
+                            <Card raised='true' key={title} className='cards'>
+                                <CardHeader >
+                                    {title}
+                                </CardHeader>
+                            </Card>
+                        ))}
+                    </div>
+                </div>
+            </section>
             <section className="three"></section>
             <section className="four"></section>
             <section className="five"></section>
-
         </Fragment>
-
     )
 }

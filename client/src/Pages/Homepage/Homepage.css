@@ -5,7 +5,7 @@
 }
 
 .leaderboard-container {
-    width: 45%;
+    width: 70%;
 }
 
 .leaderboard {
@@ -19,7 +19,7 @@
 
 .grid-area {
     width: 40%;
-    margin-left: 10%;
+    margin-left: 25%;
     display: grid;
     margin-top: 10%;
 }
@@ -39,4 +39,28 @@
 .two {
     height: 100vh;
     background: rgb(7, 7, 7);
+}
+
+.grid-two {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5% 0px;
+}
+
+.cards {
+    height: 250px;
+    width: 250px;
+    margin: 15px;
+}
+
+.flex-two {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-two p {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
 }

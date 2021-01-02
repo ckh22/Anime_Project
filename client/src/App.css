@@ -6,3 +6,23 @@ body {
     color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, .2);
+    border-radius: 10px;
+  }
+  
+  /* scrollbar Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #4e4ca84d;;
+    border-radius: 10px;
+  }
+  
+  /* scrollbar Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(78, 76, 168, 0.5);
+  }
