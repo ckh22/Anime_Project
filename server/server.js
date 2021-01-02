@@ -13,7 +13,7 @@ import profileRoutes from './routes/profileRoutes.js';
 
 // Users
 import users from './data/users.js';
-import anime from './data/anime.js';
+import anime from './data/animeData.js';
 
 dotenv.config();
 
@@ -30,9 +30,7 @@ app.get('/', (req, res) => {
 
 // Routes
 // app.use("/api/users", require("./routes/api/users"));
-app.get('/api/users', (req, res) => {
-	res.send(users);
-});
+app.use('/api/anime', animeRoutes);
 app.get('/api/anime', (req, res) => {
 	res.send(anime);
 });
