@@ -1,0 +1,13 @@
+.main {
+    height: 100vh;
+    background: rgb(34, 34, 59);
+}
+
+.one {
+    padding-top: 75px;
+    margin-left: 5%;
+}
+
+.leaderboard {
+    width: 60%;
+}

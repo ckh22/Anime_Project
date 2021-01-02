@@ -2,10 +2,11 @@ import Animes from './Pages/Animes/Animes'
 import Studios from './Pages/Studios/Studios'
 import Characters from './Pages/Characters/Characters'
 import Homepage from './Pages/Homepage/Homepage'
-import Navbar from './Navbar/Navbar'
+import Navbar from './Components/Navbar/Navbar'
 import {Fragment} from 'react'
 import { Route } from "react-router-dom";
 import Anime from './Pages/Animes/Anime/Anime'
+import './App.css'
 
 function App() {
     return (
