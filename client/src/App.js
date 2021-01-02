@@ -5,6 +5,7 @@ import Homepage from './Pages/Homepage/Homepage'
 import Navbar from './Navbar/Navbar'
 import {Fragment} from 'react'
 import { Route } from "react-router-dom";
+import Anime from './Pages/Animes/Anime/Anime'
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                         <Fragment>
                           <Route exact path='/studios' component={Studios} />
                           <Route exact path='/animes' component={Animes} />
+                          <Route exact path='/animes/:id' component={Anime} />
                           <Route exact path='/characters' component={Characters} />
                         </Fragment>
                     )
