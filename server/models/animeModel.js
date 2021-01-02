@@ -57,11 +57,6 @@ const animeSchema = new Schema(
 				required: false,
 			},
 		},
-		isAdmin: {
-			type: Boolean,
-			required: true,
-			default: false,
-		},
 	},
 	{
 		timestamps: true,
