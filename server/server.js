@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 
 // Routes
 // app.use("/api/users", require("./routes/api/users"));
-app.use('/api/anime', animeRoutes);
+app.use('/api/animes', animeRoutes);
 app.use('/api/users', userRoutes);
 
 // Middleware

@@ -1,4 +1,4 @@
-import bcrypt from 'bcryptjs';
+//import bcrypt from 'bcryptjs';
 
 const users = [
 	{
@@ -6,7 +6,8 @@ const users = [
 		lastName: 'User',
 		userName: 'AdminUser',
 		email: 'admin@example.com',
-		password: bcrypt.hashSync('12345', 10),
+		password: 'Admin',
+		//bcrypt.hashSync('12345', 10),
 		isAdmin: true,
 	},
 	{
@@ -14,14 +15,18 @@ const users = [
 		lastName: 'Hartley',
 		userName: 'Clifford',
 		email: 'clifford@example.com',
-		password: bcrypt.hashSync('12345', 10),
+		password: 'Admin',
+		isAdmin: true,
+		// bcrypt.hashSync('12345', 10),
 	},
 	{
 		firstName: 'Robert',
 		lastName: 'Hartley',
 		userName: 'Robert',
 		email: 'robert@example.com',
-		password: bcrypt.hashSync('12345', 10),
+		password: 'Admin',
+		isAdmin: true,
+		//password: bcrypt.hashSync('12345', 10),
 	},
 ];
 
