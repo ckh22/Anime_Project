@@ -16,7 +16,7 @@ import {
 	ANIME_UPDATE_SUCCESS,
 	ANIME_UPDATE_FAIL,
 	ANIME_UPDATE_RESET,
-} from '../constants/ANIMEConstants';
+} from '../constants/animeConstants';
 
 //  ANIME_CREATE_REVIEW_REQUEST,
 // 	ANIME_CREATE_REVIEW_SUCCESS,

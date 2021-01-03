@@ -1,41 +1,38 @@
-import React from 'react'
-import animes from '../../Data/animes'
-import {Card, CardContent, Typography} from '@material-ui/core'
-import {Link} from 'react-router-dom'
+// Dependencies
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+// Material UI Core
+import { Card, CardContent, Typography } from '@material-ui/core';
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
 
 const Animes = () => {
-    return (
-        <div> {
-            animes.map((anime) => (
-                <div key={
-                    anime.id
-                }>
-                    <Card>
-                        <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                <br/> {
-                                anime.title
-                            }
-                                <br/> {
-                                anime.description
-                            } </Typography>
-                            <Link to={
-                                `/animes/${
-                                    anime.id
-                                }`
-                            }>
-                                <img src={
-                                        anime.images[0].url
-                                    }
-                                    alt=""/>
-                            </Link>
+	const dispatch = useDispatch();
+	const animeDetails = useSelector((state) => state.animeDetails);
+	const { loading, error, anime } = animeDetails;
 
-                        </CardContent>
-                    </Card>
-                </div>
-            ))
-        } </div>
-    )
-}
+	return (
+		<div>
+			{' '}
+			{anime.map((anime) => (
+				<div key={anime.id}>
+					<Card>
+						<CardContent>
+							<Typography color="textSecondary" gutterBottom>
+								<br /> {anime.title}
+								<br /> {anime.description}{' '}
+							</Typography>
+							<Link to={`/animes/${anime.id}`}>
+								<img src={anime.images[0].url} alt="" />
+							</Link>
+						</CardContent>
+					</Card>
+				</div>
+			))}{' '}
+		</div>
+	);
+};
 
-export default Animes
+export default Animes;
