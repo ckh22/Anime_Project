@@ -6,7 +6,7 @@ const anime = [
 		images: [
 			{
 				title: 'Deku',
-				url: 'image.png',
+				url: '../../client/src/Assets/Images/my_hero_academia_header.jpg',
 			},
 		],
 	},

@@ -19,11 +19,11 @@ import {
 } from '../constants/animeConstants';
 import { logout } from './userActions';
 
-export const listAnimes = (keyword = '', pageNumber = '') => async (dispatch) => {
+export const listAnimes = () => async (dispatch) => {
 	try {
 		dispatch({ type: ANIME_LIST_REQUEST });
 
-		const { data } = await axios.get(`/api/animes?keyword=${keyword}&pageNumber=${pageNumber}`);
+		const { data } = await axios.get(`/api/animes`);
 
 		dispatch({
 			type: ANIME_LIST_SUCCESS,

@@ -1,30 +1,35 @@
 import React from 'react';
-import animes from '../../../Data/animes';
+import { Link } from 'react-router-dom';
 
-const Anime = ({ match }) => {
-	const anime = animes.find((e) => e.id === match.params.id);
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+	root: {
+		maxWidth: 345,
+	},
+	media: {
+		height: 240,
+	},
+});
+
+const Anime = ({ anime }) => {
+	const classes = useStyles();
 	return (
-		<div>
-			{anime.id}
-			<br />
-			{anime.title}
-			<br />
-			{anime.description}
-			<br />
-			{anime.demographic}
-			<br />
-			{anime.genre.map((res) => (
-				<div key={res}>{res}</div>
-			))}
-			<br />
-			<img src={anime.images[0].url} alt="" />
-			<br />
-			<div>
-				{' '}
-				{anime.production.date}
-				<br />${anime.production.budget}
-			</div>
-		</div>
+		<Card className={classes.root}>
+			<CardActionArea>
+				<CardMedia className={classes.media} image={anime.image} title={anime.title} />
+			</CardActionArea>
+			<CardContent>
+				<Typography gutterBottom variant="h5" component="h2">
+					{anime.title}
+				</Typography>
+			</CardContent>
+		</Card>
 	);
 };
 

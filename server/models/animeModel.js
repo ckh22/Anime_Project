@@ -16,7 +16,7 @@ const animeSchema = new Schema(
 			type: String,
 			required: false,
 		},
-		genre: ["Adventure", "Shonen", "SuperHero", "Fantasy"],
+		genre: ['Adventure', 'Shonen', 'SuperHero', 'Fantasy'],
 		media: [],
 		images: [
 			{
@@ -24,7 +24,7 @@ const animeSchema = new Schema(
 					type: String,
 					required: false,
 				},
-				image: {
+				url: {
 					type: String,
 					required: false,
 				},

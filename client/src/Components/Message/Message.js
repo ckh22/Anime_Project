@@ -11,8 +11,17 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Message = () => {
-	return <div></div>;
+const Message = ({ variant, children }) => {
+	const classes = useStyles();
+	return (
+		<div className={classes.root}>
+			<Alert severity={variant}>{children}</Alert>;
+		</div>
+	);
+};
+
+Message.defaultProps = {
+	variant: 'info',
 };
 
 export default Message;
