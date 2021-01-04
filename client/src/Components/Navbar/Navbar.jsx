@@ -12,6 +12,7 @@ import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import Login from '../Auth/Login'
 import Register from '../Auth/Register'
 import {Link} from 'react-router-dom'
+import './Navbar.css'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,11 +36,12 @@ export default function Navbar() {
     const [login, setLogin] = React.useState(false);
     const [register, setRegister] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    // const [isShown, setIsShown] = React.useState(false);
 
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-      };
+    };
 
     function handleLogin() {
         setLogin(true);
@@ -53,7 +55,8 @@ export default function Navbar() {
         <div style={
             {
                 boxShadowBottom: '0px 25px 50px 30px white',
-                zIndex: '10'
+                zIndex: '10',
+                overflow: 'visible'
             }
         }>
             <AppBar position="static"
@@ -91,22 +94,33 @@ export default function Navbar() {
                         }
                     }>
                         <li className='nav-links'>
-                            <Link to={`/`} id='links'>
+                            <Link to={`/`}
+                                id='links'>
                                 Home
                             </Link>
                         </li>
                         <li className='nav-links'>
-                            <Link to={`/animes`} id='links'>
+                            <Link to={`/animes`}
+                                id='links'>
                                 Animes
                             </Link>
                         </li>
                         <li className='nav-links'>
-                            <div id="links" onClick={handleClick}   >
-                                Production
-                            </div>
+                            <Link to={`/studios`}
+                                id='links'>
+                                Studios
+                            </Link>
                         </li>
                         <li className='nav-links'>
-                            <Link to={`/.four`} id='links'> 
+                            <Link to={`/voiceActors`}
+                                id='links'>
+                                Voice Actors
+                            </Link>
+                        </li>
+                        
+                        <li className='nav-links'>
+                            <Link to={`/donate`}
+                                id='links'>
                                 Want to help?
                             </Link>
                         </li>
