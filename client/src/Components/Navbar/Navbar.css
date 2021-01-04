@@ -1,0 +1,12 @@
+.production-dropdown {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+}
+
+
+.dropdown-items {
+    color: white;
+}

@@ -6,7 +6,11 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
+<<<<<<< HEAD
     "@material-ui/lab": "^4.0.0-alpha.57",
+=======
+    "@stripe/stripe-js": "^1.11.0",
+>>>>>>> 06c424980c2a09d966071fd5fdac54dc27181c44
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -20,6 +24,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "stripe": "^8.129.0",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
