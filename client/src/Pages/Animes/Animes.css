@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+    background: rgb(7, 7, 7);
+    height: 91.3vh;
+}
+
+.sub-nav {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  background: rgb(69, 57, 110);
+}
+
+.sub-nav li {
+  margin: 10px 15px;
+}
+
+.item-a {
+  width: 80%;
+  height: 200px;
+  background: linear-gradient(45deg, rgba(9,18,48,1) 0%, rgba(84,52,102,1) 100%);
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.item-b {
+  display: flex;
+  padding: 30px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
