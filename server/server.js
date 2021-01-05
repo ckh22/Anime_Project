@@ -2,6 +2,7 @@
 import colors from 'colors';
 import dotenv from 'dotenv';
 import express from 'express';
+
 // import { loadStripe } from '@stripe/stripe-js';
 
 // stripe
@@ -43,6 +44,7 @@ app.get('/', (req, res) => {
 // app.use("/api/users", require("./routes/api/users"));
 app.use('/api/animes', animeRoutes);
 app.use('/api/users', userRoutes);
+
 // app.post('/create-checkout-session', async (req, res) => {
 //     const session = await stripe.checkout.sessions.create({
 //         payment_method_types: ['card'],
