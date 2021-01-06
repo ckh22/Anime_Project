@@ -19,12 +19,11 @@ const useStyles = makeStyles({
 
 const Anime = ({anime}) => {
     const classes = useStyles();
-    return (
-        <div className="item-b">
-            <Card className={
-                classes.root
-            }>
-
+    return (<div className="item-b">
+        <Card className={
+            classes.root
+        }>
+            <Link to={`/animes/${anime._id}`}>
                 <CardActionArea>
                     <CardMedia className={
                             classes.media
@@ -36,16 +35,15 @@ const Anime = ({anime}) => {
                             anime.title
                         }/>
                 </CardActionArea>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {
-                        anime.title
-                    } </Typography>
-                </CardContent>
-            </Card>
-        </div>
+            </Link>
 
-    );
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="h2"> {
+                    anime.title
+                } </Typography>
+            </CardContent>
+        </Card>
+    </div>);
 };
 
 export default Anime;

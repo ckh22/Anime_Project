@@ -61,7 +61,7 @@ const Animes = ({history, match}) => {
             </ul>
             {
             loading ? (
-                <Loader/>) : error ? (
+                <Loader />) : error ? (
                 <Message variant="error">
                     {error}</Message>
             ) : (
@@ -71,7 +71,7 @@ const Animes = ({history, match}) => {
                     animes.map((anime) => (
 
 
-                        <Anime anime={anime}
+                        <Anime anime={anime} 
                             className='item-b'
                             key={
                                 anime._id

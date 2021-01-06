@@ -119,7 +119,7 @@ export default function Navbar() {
                         </li>
                         
                         <li className='nav-links'>
-                            <Link to={`/donate`}
+                            <Link to={`/`}
                                 id='links'>
                                 Want to help?
                             </Link>

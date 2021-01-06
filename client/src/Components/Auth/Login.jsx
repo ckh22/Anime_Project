@@ -51,11 +51,11 @@ const Login = ({ open, setOpen, location, history }) => {
 	const userLogin = useSelector((state) => state.userLogin);
 	const { loading, error, userInfo } = userLogin;
 
-	useEffect(() => {
-		if (userInfo) {
-			history.push(redirect);
-		}
-	}, [history, userInfo, redirect]);
+	// useEffect(() => {
+	// 	if (userInfo) {
+	// 		history.push(redirect);
+	// 	}
+	// }, [history, userInfo, redirect]);
 
 	const submitHandler = (e) => {
 		e.preventDefault();

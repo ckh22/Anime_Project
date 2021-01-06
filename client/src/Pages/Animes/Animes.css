@@ -5,6 +5,7 @@ body {
 .main {
     background: rgb(7, 7, 7);
     height: 91.3vh;
+    position: relative;
 }
 
 .sub-nav {
