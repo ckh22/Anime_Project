@@ -1,0 +1,34 @@
+.main {
+    background: rgb(8, 8, 8);
+    height: 92.2vh;
+}
+
+.content 
+
+.jumbo-container {
+    height: 50vh;
+    overflow: hidden;
+}
+
+.jumbo-img {
+    width: 100%;
+}
+
+.content h1 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+}
+
+.description {
+    width: 60%;
+    line-height: 2;
+} 
+
+.summary {
+}

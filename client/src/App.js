@@ -5,10 +5,9 @@ import Homepage from './Pages/Homepage/Homepage'
 import Navbar from './Components/Navbar/Navbar'
 import {Fragment} from 'react'
 import { Route } from "react-router-dom";
-import Anime from './Pages/Animes/Anime/Anime'
 import VoiceActors from './Pages/VoiceActors/VoiceActors'
-import Donate from './Pages/Donate/Donate'
 import './App.css'
+import AnimeDetails from './Pages/Animes/AnimeDetails/AnimeDetails'
 
 function App() {
     return (
@@ -22,10 +21,9 @@ function App() {
                         <Fragment>
                           <Route exact path='/studios' component={Studios} />
                           <Route exact path='/animes' component={Animes} />
-                          <Route exact path='/animes/:id' component={Anime} />
+                          <Route exact path='/animes/:id' component={AnimeDetails} />
                           <Route exact path='/characters' component={Characters} />
                           <Route exact path='/voiceActors' component={VoiceActors} />
-                          <Route exact path='/donate' component={Donate} />
                         </Fragment>
                     )
                 }/>
