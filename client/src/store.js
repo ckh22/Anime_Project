@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 // Reducers Import
-import { userLoginReducer } from './redux/reducers/userReducers';
+import { userLoginReducer, userRegisterReducer } from './redux/reducers/userReducers';
 import {
 	animeListReducer,
 	animeDetailsReducer,
@@ -16,6 +16,7 @@ import {
 // Reducers
 const reducer = combineReducers({
 	userLogin: userLoginReducer,
+	userRegister: userRegisterReducer,
 	animeList: animeListReducer,
 	animeDetail: animeDetailsReducer,
 	animeCreate: animeCreateReducer,

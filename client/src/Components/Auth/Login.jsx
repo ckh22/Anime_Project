@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Dialog from '@material-ui/core/Dialog';
 import { makeStyles } from '@material-ui/core/styles';
@@ -46,6 +46,7 @@ const Login = ({ open, setOpen, location, history }) => {
 	const [password, setPassword] = useState('');
 
 	const dispatch = useDispatch();
+	const redirect = location.search ? location.search.split('=')[1] : '/';
 
 	const userLogin = useSelector((state) => state.userLogin);
 	const { loading, error, userInfo } = userLogin;
