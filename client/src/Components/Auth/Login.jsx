@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import Dialog from '@material-ui/core/Dialog';
 import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, Button, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography } from '@material-ui/core';
+import { Avatar, Button, TextField, FormControlLabel, Checkbox, Grid, Box, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 import Message from '../Message/Message';
@@ -46,7 +46,7 @@ const Login = ({ open, setOpen, location, history }) => {
 	const [password, setPassword] = useState('');
 
 	const dispatch = useDispatch();
-	const redirect = location.search ? location.search.split('=')[1] : '/';
+	// const redirect = location.search ? location.search.split('=')[1] : '/';
 
 	const userLogin = useSelector((state) => state.userLogin);
 	const { loading, error, userInfo } = userLogin;
