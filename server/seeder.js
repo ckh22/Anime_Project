@@ -6,50 +6,55 @@ import animes from './data/animeData.js';
 import User from './models/userModel.js';
 import Anime from './models/animeModel.js';
 import connectDB from './config/database.js';
+import {createData} from './data/jikan.js'
 
 dotenv.config();
 
 connectDB();
+const topAnime = await createData()
+console.log(topAnime)
 
 const importData = async () => {
-	try {
-        // Delete pre-existing data
-		await Anime.deleteMany();
-		await User.deleteMany();
+    try { // Delete pre-existing data
+        await Anime.deleteMany();
+        await User.deleteMany();
 
-		const createdUsers = await User.insertMany(users);
+        const createdUsers = await User.insertMany(users);
 
-		const adminUser = createdUsers[0]._id;
+        const adminUser = createdUsers[0]._id;
 
-		const sampleAnimes = animes.map((anime) => {
-			return { ...anime, user: adminUser };
-		});
+        const sampleAnimes = animes.map((anime) => {
+            return {
+                ...anime,
+                user: adminUser
+            };
+        });
 
-		await Anime.insertMany(sampleAnimes);
+        await Anime.insertMany(sampleAnimes);
 
-		console.log('Data Imported!'.green.inverse);
-		process.exit();
-	} catch (error) {
-		console.error(`${error}`.red.inverse);
-		process.exit(1);
-	}
+        console.log('Data Imported!'.green.inverse);
+        process.exit();
+    } catch (error) {
+        console.error(`${error}`.red.inverse);
+        process.exit(1);
+    }
 };
 
 const destroyData = async () => {
-	try {
-		await Anime.deleteMany();
-		await User.deleteMany();
+    try {
+        await Anime.deleteMany();
+        await User.deleteMany();
 
-		console.log('Data Destroyed!'.red.inverse);
-		process.exit();
-	} catch (error) {
-		console.error(`${error}`.red.inverse);
-		process.exit(1);
-	}
+        console.log('Data Destroyed!'.red.inverse);
+        process.exit();
+    } catch (error) {
+        console.error(`${error}`.red.inverse);
+        process.exit(1);
+    }
 };
 
 if (process.argv[2] === '-d') {
-	destroyData();
+    destroyData();
 } else {
-	importData();
+    importData();
 }
