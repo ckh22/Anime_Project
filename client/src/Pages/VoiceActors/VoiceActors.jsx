@@ -2,7 +2,7 @@ import React from 'react'
 
 const VoiceActors = () => {
     return (
-        <div>
+        <div className='main'>
             VoiceActors
         </div>
     )

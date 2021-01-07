@@ -16,6 +16,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 // Actions
 import {listAnimes} from '../../redux/actions/animeActions';
+import CarouselFormat from '../../Components/Carousel/CarouselFormat'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,35 +52,38 @@ const Animes = ({history, match}) => {
 
     return (
         <div className='main'>
-            <ul className='sub-nav'>
-                <li>Winter 2021 Anime</li>
-                <li>By Decade</li>
-                <li>Nav</li>
-                <li>Nav</li>
-                <li>Nav</li>
-                <li>Nav</li>
-            </ul>
-            {
-            loading ? (
-                <Loader />) : error ? (
-                <Message variant="error">
-                    {error}</Message>
-            ) : (
-                <div className='container'>
-                    <div className="item-a">Featured Anime</div>
-                    {
-                    animes.map((anime) => (
+            <div className="anime-content">
+                <ul className='sub-nav'>
+                    <li>Winter 2021 Anime</li>
+                    <li>By Decade</li>
+                    <li>Nav</li>
+                    <li>Nav</li>
+                    <li>Nav</li>
+                    <li>Nav</li>
+                </ul>
+                {
+                loading ? (
+                    <Loader/>) : error ? (
+                    <Message variant="error">
+                        {error}</Message>
+                ) : (
+                    <div className='container'>
+                        <CarouselFormat/>
+                        {
+                        animes.map((anime) => (
 
 
-                        <Anime anime={anime} 
-                            className='item-b'
-                            key={
-                                anime._id
-                            }/>
-                    ))
-                } </div>
-            )
-        } </div>
+                            <Anime anime={anime}
+                                className='item-b'
+                                key={
+                                    anime._id
+                                }/>
+                        ))
+                    } </div>
+                )
+            } </div>
+        </div>
+
     );
 };
 export default Animes;

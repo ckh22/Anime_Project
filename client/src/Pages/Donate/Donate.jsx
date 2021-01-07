@@ -1,11 +1,12 @@
 import React from 'react'
+import './Donate.css';
 
-const Studios = () => {
+const Donate = () => {
     return (
         <div className='main'>
-            Studios
+            Donate
         </div>
     )
 }
 
-export default Studios
+export default Donate

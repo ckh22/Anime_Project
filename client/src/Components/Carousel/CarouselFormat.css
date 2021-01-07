@@ -1,0 +1,11 @@
+.images {
+    transform: translateY(-50%);
+}
+
+.carousel-slider {
+    height: 50vh;
+}
+
+.thumbs-wrapper {
+    display: none;
+}

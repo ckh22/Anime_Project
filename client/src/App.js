@@ -15,6 +15,7 @@ import Register from './Components/Auth/Register';
 
 // Style
 import './App.css';
+import Donate from './Pages/Donate/Donate';
 
 function App() {
 	return (
@@ -33,6 +34,7 @@ function App() {
 							<Route exact path="/voiceActors" component={VoiceActors} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/register" component={Register} />
+							<Route exact path="/donate" component={Donate} />
 						</>
 					)}
 				/>
