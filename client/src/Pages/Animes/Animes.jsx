@@ -55,11 +55,9 @@ const Animes = ({history, match}) => {
             <div className="anime-content">
                 <ul className='sub-nav'>
                     <li>Winter 2021 Anime</li>
+                    <li>Popular</li>
                     <li>By Decade</li>
-                    <li>Nav</li>
-                    <li>Nav</li>
-                    <li>Nav</li>
-                    <li>Nav</li>
+                    <li>Community</li>
                 </ul>
                 {
                 loading ? (
@@ -69,17 +67,25 @@ const Animes = ({history, match}) => {
                 ) : (
                     <div className='container'>
                         <CarouselFormat/>
-                        {
-                        animes.map((anime) => (
+                        <div className="popular">
+                            Hot 🔥
+                        </div>
+                        <div className="animes-flex">
+                            {
+                            animes.map((anime) => (
 
+                                <div><Anime anime={anime}
+                                        className='item-b'
+                                        key={
+                                            anime._id
+                                        }/><div>{
+                                        anime.title
+                                    }</div>
+                                </div>
 
-                            <Anime anime={anime}
-                                className='item-b'
-                                key={
-                                    anime._id
-                                }/>
-                        ))
-                    } </div>
+                            ))
+                        } </div>
+                    </div>
                 )
             } </div>
         </div>

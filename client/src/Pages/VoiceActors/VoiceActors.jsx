@@ -3,7 +3,12 @@ import React from 'react'
 const VoiceActors = () => {
     return (
         <div className='main'>
-            VoiceActors
+            <ul className='sub-nav'>
+                    <li>Popular</li>
+                    <li>Upcoming</li>
+                    <li>Community</li>
+
+                </ul>
         </div>
     )
 }

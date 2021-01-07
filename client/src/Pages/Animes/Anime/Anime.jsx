@@ -6,21 +6,23 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
-import {makeStyles} from '@material-ui/core/styles';
+// import {makeStyles} from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
-    root: {
-        maxWidth: 345
-    },
-    media: {
-        height: 240
-    }
-});
+// const useStyles = makeStyles({
+//     root: {
+//         maxWidth: 345
+//     },
+//     media: {
+//         height: 240
+//     }
+// });
 
 const Anime = ({anime}) => {
-    const classes = useStyles();
-    return (<div className="item-b">
-        <Card className={
+    // const classes = useStyles();
+    console.log(anime)
+    return (<div className="anime-card">
+
+        {/* <Card className={
             classes.root
         }>
             <Link to={`/animes/${anime._id}`}>
@@ -42,7 +44,7 @@ const Anime = ({anime}) => {
                     anime.title
                 } </Typography>
             </CardContent>
-        </Card>
+        </Card> */}
     </div>);
 };
 

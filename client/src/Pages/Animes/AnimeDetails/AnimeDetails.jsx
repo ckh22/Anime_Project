@@ -10,12 +10,12 @@ const AnimeDetails = ({match}) => {
     return (
         <div className='main'>
             <ul className='sub-nav'>
-                <li>Winter 2021 Anime</li>
-                <li>By Decade</li>
-                <li>Nav</li>
-                <li>Nav</li>
-                <li>Nav</li>
-                <li>Nav</li>
+                <li>Episodes</li>
+                <li>Manga</li>
+                <li>Community</li>
+                <li>Characters</li>
+                <li>Voice Actors</li>
+                
             </ul>
             <div className="content">
                 <div className="jumbo-container">
