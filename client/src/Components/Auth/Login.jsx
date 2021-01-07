@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 import Dialog from '@material-ui/core/Dialog';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,8 +18,8 @@ function Copyright() {
 	return (
 		<Typography variant="body2" color="textSecondary" align="center">
 			{'Copyright © '}
-			<Link color="inherit" href="https://material-ui.com/">
-				Your Website
+			<Link component={RouterLink} to="/">
+				AnimeCenter
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}{' '}
@@ -44,10 +44,7 @@ const useStyles = makeStyles((theme) => ({
 const Login = ({ open, setOpen, location, history }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
 	const dispatch = useDispatch();
-	// const redirect = location.search ? location.search.split('=')[1] : '/';
-
 	const userLogin = useSelector((state) => state.userLogin);
 	const { loading, error, userInfo } = userLogin;
 
