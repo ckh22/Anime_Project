@@ -1,7 +1,7 @@
 // Dependencies Imports
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, Redirect } from 'react-router-dom';
 
 import clsx from 'clsx';
 
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Login = ({ open, setOpen}) => {
+const Login = ({ open, setOpen }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [values, setValues] = useState({
@@ -121,7 +121,6 @@ const Login = ({ open, setOpen}) => {
 	};
 
 	const classes = useStyles();
-
 
 	// useEffect(() => {
 	// 	if (userInfo) {
