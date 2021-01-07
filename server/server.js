@@ -3,15 +3,11 @@ import colors from 'colors';
 import dotenv from 'dotenv';
 import express from 'express';
 
-// import { loadStripe } from '@stripe/stripe-js';
-
-// stripe
-// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-// const YOUR_DOMAIN = 'http://localhost:3000/donate';
 
 // import path from 'path';
 import connectDB from './config/database.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import {createData} from './data/jikan.js'
 
 // Routes (Import):
 import animeRoutes from './routes/animeRoutes.js';
@@ -30,6 +26,7 @@ dotenv.config();
 // The connection
 connectDB();
 
+
 const app = express();
 
 // Asking express to use json as a default
@@ -45,28 +42,6 @@ app.get('/', (req, res) => {
 app.use('/api/animes', animeRoutes);
 app.use('/api/users', userRoutes);
 
-// app.post('/create-checkout-session', async (req, res) => {
-//     const session = await stripe.checkout.sessions.create({
-//         payment_method_types: ['card'],
-//         line_items: [
-//             {
-//                 price_data: {
-//                     currency: 'usd',
-//                     product_data: {
-//                         name: 'Stubborn Attachments',
-//                         images: ['https://i.imgur.com/EHyR2nP.png']
-//                     },
-//                     unit_amount: 2000
-//                 },
-//                 quantity: 1
-//             },
-//         ],
-//         mode: 'payment',
-//         success_url: `${YOUR_DOMAIN}?success=true`,
-//         cancel_url: `${YOUR_DOMAIN}?canceled=true`
-//     });
-//     res.json({id: session.id});
-// });
 
 // Middleware
 app.use(notFound);
@@ -75,3 +50,4 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server runnin in ${process.env.NODE_ENV} mode on ${PORT}`.red.bold));
+const topAnime = await createData()
