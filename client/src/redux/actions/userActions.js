@@ -21,7 +21,7 @@ export const login = (email, password) => async (dispatch) => {
 			},
 		};
 
-		const { data } = await axios.post('/apli/users/login', { email, password }, config);
+		const { data } = await axios.post('/api/users/login', { email, password }, config);
 
 		dispatch({
 			type: USER_LOGIN_SUCCESS,

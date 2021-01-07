@@ -1,9 +1,9 @@
 // Dependencies Imports
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 // Material UI Core Imports
-import { AppBar, Toolbar, IconButton, Typography, Button, Link } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Typography, Button, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
@@ -11,9 +11,16 @@ import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 // Components Imports
 import Login from '../Auth/Login';
 import Register from '../Auth/Register';
+import SearchBox from '../SearchBox/SearchBox';
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
 
 // Style
 import './Navbar.css';
+
+// Actions
+import { logout } from '../../redux/actions/userActions';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -33,14 +40,23 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Navbar() {
+const Navbar = () => {
 	const [login, setLogin] = React.useState(false);
 	const [register, setRegister] = React.useState(false);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	// const [isShown, setIsShown] = React.useState(false);
 
+	const dispatch = useDispatch();
+
+	const userLogin = useSelector((state) => state.userLogin);
+	const { userInfo } = userLogin;
+
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
+	};
+
+	const logoutHandler = () => {
+		dispatch(logout());
 	};
 
 	function handleLogin() {
@@ -104,33 +120,32 @@ export default function Navbar() {
 						</li>
 
 						<li className="nav-links">
-							<Link to={`/`} id="links">
+							<Link to={`/WantToHelp`} id="links">
 								Want to help?
 							</Link>
 						</li>
 					</ul>
-					<Button
-						component={RouterLink}
-						to="/login"
-						color="inherit"
-						onClick={handleLogin}
-						className={classes.menuButton}
-					>
-						Login
-					</Button>
-					<Button
-						component={RouterLink}
-						to="/register"
-						color="inherit"
-						onClick={handleRegister}
-						className={classes.menuButton}
-					>
-						Register
-					</Button>
+					<Route render={({ history }) => <SearchBox history={history} />} />
+					{userInfo ? (
+						<Button color="inherit" onClick={logoutHandler} className={classes.menuButton}>
+							Logout
+						</Button>
+					) : (
+						<Container>
+							<Button color="inherit" onClick={handleLogin} className={classes.menuButton}>
+								Login
+							</Button>
+							<Button color="inherit" onClick={handleRegister} className={classes.menuButton}>
+								Register
+							</Button>
+						</Container>
+					)}
 				</Toolbar>
 			</AppBar>
 			<Login open={login} setOpen={setLogin} />
 			<Register open={register} setOpen={setRegister} />
 		</div>
 	);
-}
+};
+
+export default Navbar;
