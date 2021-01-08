@@ -1,5 +1,5 @@
 // Dependencies Imports
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, Route} from 'react-router-dom';
 
 // Material UI Core Imports
@@ -23,9 +23,9 @@ import {logout} from '../../redux/actions/userActions';
 
 
 const Navbar = () => {
-    const [login, setLogin] = React.useState(false);
-    const [register, setRegister] = React.useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [login, setLogin] = useState(false);
+    const [register, setRegister] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
     // const [isShown, setIsShown] = React.useState(false);
 
     const dispatch = useDispatch();
