@@ -13,6 +13,14 @@ import {
 	animeUpdateReducer,
 } from './redux/reducers/animeReducers';
 
+import {
+	voiceActorListReducer,
+	voiceActorDetailsReducer,
+	voiceActorDeleteReducer,
+	voiceActorCreateReducer,
+	voiceActorUpdateReducer,
+} from './redux/reducers/vaReducers';
+
 // Reducers
 const reducer = combineReducers({
 	userLogin: userLoginReducer,
@@ -22,6 +30,11 @@ const reducer = combineReducers({
 	animeCreate: animeCreateReducer,
 	animeUpdate: animeUpdateReducer,
 	animeDelete: animeDeleteReducer,
+	voiceActorList: voiceActorListReducer,
+	voiceActorDetail: voiceActorDetailsReducer,
+	voiceActorCreate: voiceActorCreateReducer,
+	voiceActorUpdate: voiceActorUpdateReducer,
+	voiceActorDelete: voiceActorDeleteReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;

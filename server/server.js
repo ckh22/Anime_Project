@@ -13,6 +13,7 @@ import {createData} from './data/jikan.js'
 import animeRoutes from './routes/animeRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
+import voiceActorRoutes from './routes/voiceActorRoutes.js'
 
 // Temporary Data
 import users from './data/users.js';
@@ -41,6 +42,7 @@ app.get('/', (req, res) => {
 // app.use("/api/users", require("./routes/api/users"));
 app.use('/api/animes', animeRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/voiceActors', voiceActorRoutes);
 
 
 // Middleware

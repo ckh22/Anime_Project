@@ -1,26 +1,27 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
-import {makeStyles} from '@material-ui/core/styles';
+// import Card from '@material-ui/core/Card';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import CardActionArea from '@material-ui/core/CardActionArea';
+// import Typography from '@material-ui/core/Typography';
+// import CardContent from '@material-ui/core/CardContent';
+// import {makeStyles} from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
-    root: {
-        maxWidth: 345
-    },
-    media: {
-        height: 240
-    }
-});
+// const useStyles = makeStyles({
+//     root: {
+//         maxWidth: 345
+//     },
+//     media: {
+//         height: 240
+//     }
+// });
 
 const Anime = ({anime}) => {
-    const classes = useStyles();
-    return (<div className="item-b">
-        <Card className={
+    // const classes = useStyles();
+    return (<Link to={`/animes/${anime._id}`}><div className="anime-card">
+
+        {/* <Card className={
             classes.root
         }>
             <Link to={`/animes/${anime._id}`}>
@@ -42,8 +43,8 @@ const Anime = ({anime}) => {
                     anime.title
                 } </Typography>
             </CardContent>
-        </Card>
-    </div>);
+        </Card> */}
+    </div></Link>);
 };
 
 export default Anime;
