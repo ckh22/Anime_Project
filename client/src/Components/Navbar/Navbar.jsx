@@ -3,9 +3,9 @@ import React from 'react';
 import {Link, Route} from 'react-router-dom';
 
 // Material UI Core Imports
-import MenuIcon from '@material-ui/icons/Menu';
-import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import {Button, Container} from '@material-ui/core'
+// import MenuIcon from '@material-ui/icons/Menu';
+// import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+import {Button} from '@material-ui/core'
 
 // Components Imports
 import Login from '../Auth/Login';
@@ -25,17 +25,12 @@ import {logout} from '../../redux/actions/userActions';
 const Navbar = () => {
     const [login, setLogin] = React.useState(false);
     const [register, setRegister] = React.useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(null);
     // const [isShown, setIsShown] = React.useState(false);
 
     const dispatch = useDispatch();
 
     const userLogin = useSelector((state) => state.userLogin);
     const {userInfo} = userLogin;
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
 
     const logoutHandler = () => {
         dispatch(logout());

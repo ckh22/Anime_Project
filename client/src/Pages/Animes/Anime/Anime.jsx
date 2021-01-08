@@ -1,11 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
+// import Card from '@material-ui/core/Card';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import CardActionArea from '@material-ui/core/CardActionArea';
+// import Typography from '@material-ui/core/Typography';
+// import CardContent from '@material-ui/core/CardContent';
 // import {makeStyles} from '@material-ui/core/styles';
 
 // const useStyles = makeStyles({
@@ -19,8 +19,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 const Anime = ({anime}) => {
     // const classes = useStyles();
-    console.log(anime)
-    return (<div className="anime-card">
+    return (<Link to={`/animes/${anime._id}`}><div className="anime-card">
 
         {/* <Card className={
             classes.root
@@ -45,7 +44,7 @@ const Anime = ({anime}) => {
                 } </Typography>
             </CardContent>
         </Card> */}
-    </div>);
+    </div></Link>);
 };
 
 export default Anime;

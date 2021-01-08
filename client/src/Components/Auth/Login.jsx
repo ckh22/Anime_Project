@@ -1,7 +1,7 @@
 // Dependencies Imports
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink, Redirect } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 import clsx from 'clsx';
 
@@ -83,7 +83,7 @@ const Login = ({ open, setOpen }) => {
 	const userLogin = useSelector((state) => state.userLogin);
 
 	// Decontructured userLogin data
-	const { loading, error, userInfo } = userLogin;
+	const { loading, error } = userLogin;
 
 	// useEffect(() => {
 	// 	if (userInfo) {
@@ -215,7 +215,7 @@ const Login = ({ open, setOpen }) => {
 
 export default Login;
 
-{
+
 	/* <TextField
 							error
 							id="outlined-error-helper-text"
@@ -245,4 +245,3 @@ export default Login;
 							id="password"
 							autoComplete="current-password"
 						/> */
-}

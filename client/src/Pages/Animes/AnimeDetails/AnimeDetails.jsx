@@ -6,7 +6,7 @@ import './AnimeDetails.css'
 const AnimeDetails = ({match}) => {
     const data = useSelector((state) => state.animeList.animes)
     const found = data.find(anime => anime._id === match.params.id)
-    const [anime, setstate] = React.useState(found);
+    const [anime] = React.useState(found);
     return (
         <div className='main'>
             <ul className='sub-nav'>
@@ -20,7 +20,7 @@ const AnimeDetails = ({match}) => {
             <div className="content">
                 <div className="jumbo-container">
                     <div class="button-container">
-                        <a href="#" class="button">
+                        <a href="https://google.com" class="button">
                             Join The Community
                         </a>
                     </div>

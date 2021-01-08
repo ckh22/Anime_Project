@@ -1,6 +1,6 @@
 // Dependencies
 import React from 'react';
-import { Route, Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 // Pages
 import Animes from './Pages/Animes/Animes';

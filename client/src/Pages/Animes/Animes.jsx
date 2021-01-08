@@ -1,5 +1,5 @@
 // Dependencies
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import './Animes.css'
 
 // Components
@@ -8,8 +8,8 @@ import Loader from '../../Components/Loader/Loader';
 import Anime from './Anime/Anime';
 
 // Material UI Core
-import {Grid, Paper} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+// import {Grid, Paper} from '@material-ui/core';
+// import {makeStyles} from '@material-ui/core/styles';
 
 // Redux
 import {useDispatch, useSelector} from 'react-redux';
@@ -18,18 +18,18 @@ import {useDispatch, useSelector} from 'react-redux';
 import {listAnimes} from '../../redux/actions/animeActions';
 import CarouselFormat from '../../Components/Carousel/CarouselFormat'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1
-    },
-    paper: {
-        height: 140,
-        width: 100
-    },
-    control: {
-        padding: theme.spacing(2)
-    }
-}));
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//         flexGrow: 1
+//     },
+//     paper: {
+//         height: 140,
+//         width: 100
+//     },
+//     control: {
+//         padding: theme.spacing(2)
+//     }
+// }));
 
 const Animes = ({history, match}) => {
     // Page number for pagination later on
@@ -43,7 +43,7 @@ const Animes = ({history, match}) => {
     const {loading, error, animes} = animeList;
 
     // Material UI Core
-    const classes = useStyles();
+    // const classes = useStyles();
 
     // Effect
     useEffect(() => {
