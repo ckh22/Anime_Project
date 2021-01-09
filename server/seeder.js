@@ -3,24 +3,26 @@ import dotenv from 'dotenv';
 import colors from 'colors';
 import users from './data/users.js';
 import animes from './data/animeData.js';
+import topAnimes from './data/jikanData.js'
 import voiceActors from './data/voiceActorData.js'
+import TopAnime from './models/topAnimeModel.js'
 import User from './models/userModel.js';
 import VoiceActor from './models/voiceActorModel.js';
 import Anime from './models/animeModel.js';
 import connectDB from './config/database.js';
 import {createData} from './data/jikan.js'
+import fs from 'fs'
 
 dotenv.config();
 
 connectDB();
-const topAnime = await createData()
-console.log(topAnime)
 
 const importData = async () => {
     try { // Delete pre-existing data
         await Anime.deleteMany();
         await User.deleteMany();
         await VoiceActor.deleteMany();
+        await TopAnime.deleteMany();
 
         const createdUsers = await User.insertMany(users);
 
@@ -33,6 +35,13 @@ const importData = async () => {
             };
         });
 
+        const sampleTopAnimes = topAnimes.map((topAnime) => {
+            return {
+                ...topAnime,
+                user: adminUser
+            }
+        })
+
         const sampleVoiceActors = voiceActors.map((voiceActor) => {
             return {
                 ...voiceActor,
@@ -41,6 +50,7 @@ const importData = async () => {
         });
         await VoiceActor.insertMany(sampleVoiceActors);
         await Anime.insertMany(sampleAnimes);
+        await TopAnime.insertMany(sampleTopAnimes);
 
         console.log('Data Imported!'.green.inverse);
         process.exit();
@@ -55,6 +65,7 @@ const destroyData = async () => {
         await Anime.deleteMany();
         await User.deleteMany();
         await VoiceActor.deleteMany()
+        await TopAnime.deleteMany()
 
         console.log('Data Destroyed!'.red.inverse);
         process.exit();

@@ -1,25 +1,22 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useEffect} from 'react'
 import './Homepage.css'
 import {Button, Card, CardHeader} from '@material-ui/core'
 
 import Leaderboard from '../../Components/Statistics/Leaderboard'
-
-  
-
-const titles = [
-    'sdaidsua',
-    'dsubaidsbuad',
-    'sdaidsua',
-    'dsubaidsbuad',
-    'sdaidsua',
-    'dsubaidsbuad',
-    'sdaidsua',
-    'dsubaidsbuad',
-]
+import {listTopAnimes} from '../../redux/actions/topAnimesActions'
+import {useDispatch, useSelector} from 'react-redux';
+import Loader from '../../Components/Loader/Loader'
+import Message from '../../Components/Message/Message'
 
 export default function Homepage() {
-    return (
-        <Fragment>
+    const dispatch = useDispatch();
+    const topAnimeList = useSelector(state => state.topAnimeList)
+    const {loading, error, topAnimes} = topAnimeList;
+    useEffect(() => {
+        dispatch(listTopAnimes())
+    }, [dispatch])
+    return (<div className='main'> {
+        loading ? (<Loader/>) : error ? (<Message variant='error'> {error}</Message>) : (<>
             <section className="one">
                 <div className="flex-container">
                     <div className="leaderboard-container">
@@ -34,27 +31,23 @@ export default function Homepage() {
                             <Button color='primary' size='large'>Vote Now!</Button>
                         </div>
                     </div>
-
-
                 </div>
             </section>
             <section className="two">
                 <div className="flex-two">
                     <p>Active Pages</p>
-                    <div className="grid-two">
-                        {titles.map((title) => (
-                            <Card raised='true' key={title} className='cards'>
-                                <CardHeader >
-                                    {title}
-                                </CardHeader>
-                            </Card>
-                        ))}
-                    </div>
+                    <div className="grid-two"> {
+                        topAnimes.map(({topAnime}) => (<Card raised={true} className='cards'>
+                            <CardHeader> {
+                                topAnime
+                            } </CardHeader>
+                        </Card>))
+                    } </div>
                 </div>
             </section>
             <section className="three"></section>
             <section className="four"></section>
             <section className="five"></section>
-        </Fragment>
-    )
+        </>)
+    } </div>)
 }

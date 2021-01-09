@@ -1,4 +1,5 @@
 import unirest from 'unirest'
+import fs from 'fs'
 
 const createData = async () => {
     var req = unirest("GET", "https://jikan1.p.rapidapi.com/top/anime/1/upcoming");
@@ -8,9 +9,17 @@ const createData = async () => {
     await req.end(function (res) {
         if (res.error) 
             throw new Error(res.error);
+        
+        fs.writeFile("./test.txt", JSON.stringify(res.body), function (err) {
+            if (err) {
+                console.log(err);
+            }
+        });
         return res.body
     });
 
 }
 
-export { createData };
+export {
+    createData
+};

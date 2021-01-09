@@ -6,14 +6,15 @@ import express from 'express';
 
 // import path from 'path';
 import connectDB from './config/database.js';
-import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import {notFound, errorHandler} from './middleware/errorMiddleware.js';
 import {createData} from './data/jikan.js'
 
 // Routes (Import):
 import animeRoutes from './routes/animeRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
-import voiceActorRoutes from './routes/voiceActorRoutes.js'
+import voiceActorRoutes from './routes/voiceActorRoutes.js';
+import topAnimeRoutes from './routes/topAnimeRoutes.js';
 
 // Temporary Data
 import users from './data/users.js';
@@ -22,7 +23,7 @@ import anime from './data/animeData.js';
 dotenv.config();
 
 // Function running to connect express with database
-// connectDB(); was imported from another file and 
+// connectDB(); was imported from another file and
 // Sends a connection request using .env file and returns
 // The connection
 connectDB();
@@ -35,7 +36,7 @@ app.use(express.json());
 
 // Initial Test Route
 app.get('/', (req, res) => {
-	res.send('API running nicely boss');
+    res.send('API running nicely boss');
 });
 
 // Routes
@@ -43,6 +44,7 @@ app.get('/', (req, res) => {
 app.use('/api/animes', animeRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/voiceActors', voiceActorRoutes);
+app.use('/api/topAnimes', topAnimeRoutes);
 
 
 // Middleware
@@ -51,5 +53,7 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`Server runnin in ${process.env.NODE_ENV} mode on ${PORT}`.red.bold));
+app.listen(PORT, console.log(`Server runnin in ${
+    process.env.NODE_ENV
+} mode on ${PORT}`.red.bold));
 const topAnime = await createData()

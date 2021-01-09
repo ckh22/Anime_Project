@@ -38,6 +38,7 @@ const Animes = ({history, match}) => {
     // Redux
     const dispatch = useDispatch();
     const animeList = useSelector((state) => state.animeList);
+    
 
     // Decontructing animeDetails on Redux store
     const {loading, error, animes} = animeList;
@@ -49,6 +50,8 @@ const Animes = ({history, match}) => {
     useEffect(() => {
         dispatch(listAnimes());
     }, [dispatch]);
+
+    
 
     return (
         <div className='main'>
