@@ -85,7 +85,7 @@ const Login = ({ open, setOpen }) => {
 	const userLogin = useSelector((state) => state.userLogin);
 
 	// Decontructured userLogin data
-	const { loading, error } = userLogin;
+	const { loading, error, userInfo } = userLogin;
 
 	// React Router Dom
 	let history = useHistory();
