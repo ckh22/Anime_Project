@@ -32,8 +32,6 @@ function App() {
 							<Route exact path="/animes/:id" component={AnimeDetails} />
 							<Route exact path="/characters" component={Characters} />
 							<Route exact path="/voiceActors" component={VoiceActors} />
-							<Route exact path="/login" component={Login} />
-							<Route exact path="/register" component={Register} />
 							<Route exact path="/donate" component={Donate} />
 						</>
 					)}
