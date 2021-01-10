@@ -1,6 +1,6 @@
 // Dependencies Imports
 import React, { useState } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Material UI Core Imports
 // import MenuIcon from '@material-ui/icons/Menu';
@@ -22,8 +22,8 @@ import './Navbar.css';
 import { logout } from '../../redux/actions/userActions';
 
 const Navbar = () => {
-	const [login, setLogin] = React.useState(false);
-	const [register, setRegister] = React.useState(false);
+	const [loginOpen, setLoginOpen] = useState(false);
+	const [registerOpen, setRegisterOpen] = useState(false);
 	// const [isShown, setIsShown] = React.useState(false);
 
 	const dispatch = useDispatch();
@@ -31,17 +31,17 @@ const Navbar = () => {
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
 
+	const handleClickShowLogin = () => {
+		setLoginOpen(!loginOpen);
+	};
+	const handleClickShowRegister = () => {
+		setRegisterOpen(!registerOpen);
+	};
+
 	const logoutHandler = () => {
 		dispatch(logout());
 	};
 
-	function handleLogin() {
-		setLogin(true);
-	}
-
-	function handleRegister() {
-		setRegister(true);
-	}
 	return (
 		<nav>
 			<div className="nav-container">
@@ -77,25 +77,24 @@ const Navbar = () => {
 						</Link>
 					</li>
 				</ul>
-				<Route render={({ history }) => <SearchBox history={history} />} />{' '}
 				{userInfo ? (
 					<Button color="inherit" onClick={logoutHandler}>
 						Logout
 					</Button>
 				) : (
 					<div className="btn-auth">
-						<Button color="inherit" onClick={handleLogin}>
+						<Button color="inherit" onClick={handleClickShowLogin}>
 							Login
 						</Button>
-						<Button color="inherit" onClick={handleRegister}>
+						<Button color="inherit" onClick={handleClickShowRegister}>
 							Register
 						</Button>
 					</div>
 				)}{' '}
 			</div>
 
-			<Login open={login} setOpen={setLogin} />
-			<Register open={register} setOpen={setRegister} />
+			<Login open={loginOpen} setOpen={setLoginOpen} />
+			<Register open={registerOpen} setOpen={setRegisterOpen} />
 		</nav>
 	);
 };
