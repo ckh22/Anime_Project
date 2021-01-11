@@ -10,8 +10,9 @@ import Homepage from './Pages/Homepage/Homepage';
 import Navbar from './Components/Navbar/Navbar';
 import VoiceActors from './Pages/VoiceActors/VoiceActors';
 import AnimeDetails from './Pages/Animes/AnimeDetails/AnimeDetails';
-import Login from './Components/Auth/Login';
-import Register from './Components/Auth/Register';
+import Dashboard from './Pages/Dashboard/Dashboard';
+// import Login from './Components/Auth/Login';
+// import Register from './Components/Auth/Register';
 
 // Style
 import './App.css';
@@ -19,24 +20,24 @@ import Donate from './Pages/Donate/Donate';
 
 function App() {
 	return (
-		
-			<div className="App">
-				<Navbar />
-				<Route exact path="/" component={Homepage} />
-				<Route
-					path={'/(.+)'}
-					render={() => (
-						<>
-							<Route exact path="/studios" component={Studios} />
-							<Route exact path="/animes" component={Animes} />
-							<Route exact path="/animes/:id" component={AnimeDetails} />
-							<Route exact path="/characters" component={Characters} />
-							<Route exact path="/voiceActors" component={VoiceActors} />
-							<Route exact path="/donate" component={Donate} />
-						</>
-					)}
-				/>
-			</div>
+		<div className="App">
+			<Navbar />
+			<Route exact path="/" component={Homepage} />
+			<Route
+				path={'/(.+)'}
+				render={() => (
+					<>
+						<Route exact path="/studios" component={Studios} />
+						<Route exact path="/animes" component={Animes} />
+						<Route exact path="/animes/:id" component={AnimeDetails} />
+						<Route exact path="/characters" component={Characters} />
+						<Route exact path="/voiceActors" component={VoiceActors} />
+						<Route exact path="/donate" component={Donate} />
+						<Route exact path="/dashboard/:id" component={Dashboard} />
+					</>
+				)}
+			/>
+		</div>
 	);
 }
 

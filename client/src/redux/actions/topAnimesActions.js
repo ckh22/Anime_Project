@@ -78,7 +78,7 @@ export const deleteTopAnime = (id) => async (dispatch, getState) => {
 		});
 	} catch (error) {
 		const message = error.response && error.response.data.message ? error.response.data.message : error.message;
-		if (message === 'Not authorized, token failed') {
+		if (message === 'Not Authorized: Failure with token') {
 			dispatch(logout());
 		}
 		dispatch({
@@ -112,7 +112,7 @@ export const createTopAnime = () => async (dispatch, getState) => {
 		});
 	} catch (error) {
 		const message = error.response && error.response.data.message ? error.response.data.message : error.message;
-		if (message === 'Not authorized, token failed') {
+		if (message === 'Not Authorized: Failure with token') {
 			dispatch(logout());
 		}
 		dispatch({
@@ -148,7 +148,7 @@ export const updateTopAnime = (anime) => async (dispatch, getState) => {
 		dispatch({ type: TOP_ANIME_DETAILS_SUCCESS, payload: data });
 	} catch (error) {
 		const message = error.response && error.response.data.message ? error.response.data.message : error.message;
-		if (message === 'Not authorized, token failed') {
+		if (message === 'Not Authorized: Failure with token') {
 			dispatch(logout());
 		}
 		dispatch({

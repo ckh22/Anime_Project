@@ -10,7 +10,6 @@ import { Button } from '@material-ui/core';
 // Components Imports
 import Login from '../Auth/Login';
 import Register from '../Auth/Register';
-import SearchBox from '../SearchBox/SearchBox';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';

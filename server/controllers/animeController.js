@@ -39,4 +39,31 @@ const getAnimeById = asyncHandler(async (req, res) => {
 	}
 });
 
-export { getAnimes, getAnimeById };
+// @desc    Create a anime
+// @route   POST /api/animes
+// @access  Private
+const createAnime = asyncHandler(async (req, res) => {
+	const { title, description, demographic, genre, media, images, production, cast } = req.body;
+	const animeExists = await Anime.findOne({ title });
+
+	if (animeExists) {
+		res.status(400);
+		throw new Error('Anime already exists');
+	}
+
+	const anime = new Anime({
+		title: title,
+		description: description,
+		demographic: demographic,
+		genre: genre,
+		media: media,
+		images: images,
+		production: production,
+		cast: cast,
+	});
+
+	const createdAnime = await anime.save();
+	res.status(201).json(createAnime);
+});
+
+export { getAnimes, getAnimeById, createAnime };

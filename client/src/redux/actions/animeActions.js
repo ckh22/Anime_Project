@@ -78,7 +78,7 @@ export const deleteAnime = (id) => async (dispatch, getState) => {
 		});
 	} catch (error) {
 		const message = error.response && error.response.data.message ? error.response.data.message : error.message;
-		if (message === 'Not authorized, token failed') {
+		if (message === 'Not Authorized: Failure with token') {
 			dispatch(logout());
 		}
 		dispatch({
@@ -98,13 +98,14 @@ export const createAnime = () => async (dispatch, getState) => {
 			userLogin: { userInfo },
 		} = getState();
 
+		// Creating Anime should require authorization and a bearer token
 		const config = {
 			headers: {
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		};
 
-		const { data } = await axios.post(`/api/Animes`, {}, config);
+		const { data } = await axios.post(`/api/animes`, {}, config);
 
 		dispatch({
 			type: ANIME_CREATE_SUCCESS,
@@ -112,7 +113,7 @@ export const createAnime = () => async (dispatch, getState) => {
 		});
 	} catch (error) {
 		const message = error.response && error.response.data.message ? error.response.data.message : error.message;
-		if (message === 'Not authorized, token failed') {
+		if (message === 'Not Authorized: Failure with token') {
 			dispatch(logout());
 		}
 		dispatch({
@@ -148,7 +149,7 @@ export const updateAnime = (anime) => async (dispatch, getState) => {
 		dispatch({ type: ANIME_DETAILS_SUCCESS, payload: data });
 	} catch (error) {
 		const message = error.response && error.response.data.message ? error.response.data.message : error.message;
-		if (message === 'Not authorized, token failed') {
+		if (message === 'Not Authorized: Failure with token') {
 			dispatch(logout());
 		}
 		dispatch({
