@@ -4,8 +4,6 @@ import { protect, admin } from '../middleware/authMiddleware.js';
 import {
 	authUser,
 	registerUser,
-	getUserProfile,
-	updateUserProfile,
 	getUsers,
 	deleteUser,
 	getUserById,
@@ -14,13 +12,6 @@ import {
 
 router.route('/').post(registerUser).get(protect, admin, getUsers);
 router.post('/login', authUser);
-// User can update their own settings on their dashboard
-// Example: Username
-//          Email
-//          Password
-// User can delete their own account
-//
-router.route('/dashboard/:id').get(protect, getUserById).put(protect, updateUser);
 
 router
 	.route('/:id')

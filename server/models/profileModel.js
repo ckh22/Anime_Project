@@ -28,6 +28,9 @@ const ProfileSchema = new Schema({
 		twitch: {
 			type: String,
 		},
+		website: {
+			type: String,
+		}
 	},
 	date: {
 		type: Date,

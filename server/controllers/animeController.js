@@ -2,7 +2,7 @@ import asyncHandler from 'express-async-handler';
 import Anime from '../models/animeModel.js';
 
 // @desc    Fetch all animes
-// @route   GET /api/products
+// @route   GET /api/animes
 // @access  Public
 const getAnimes = asyncHandler(async (req, res) => {
 	const pageSize = 10;
@@ -26,7 +26,7 @@ const getAnimes = asyncHandler(async (req, res) => {
 });
 
 // @desc    Fetch single anime
-// @route   GET /api/anime/:id
+// @route   GET /api/animes/:id
 // @access  Public
 const getAnimeById = asyncHandler(async (req, res) => {
 	const anime = await Anime.findById(req.params.id);

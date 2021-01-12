@@ -1,7 +1,7 @@
 // Dependencies Imports
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink, useHistory, useLocation } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 import clsx from 'clsx';
 
@@ -10,24 +10,20 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
 	Avatar,
 	Button,
-	Dialog,
 	TextField,
-	FormControlLabel,
-	Checkbox,
+	FormControl,
+	InputLabel,
+	OutlinedInput,
+	InputAdornment,
+	IconButton,
+	Link,
 	Grid,
 	Box,
 	Typography,
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Link from '@material-ui/core/Link';
-// import CssBaseline from '@material-ui/core/CssBaseline';
 
 // Components Imports
 // import Message from '../Message/Message';
@@ -35,6 +31,9 @@ import Loader from '../Loader/Loader';
 
 // Actions Imports
 import { login } from '../../redux/actions/userActions';
+
+// Style
+import './Login.css';
 
 // Copy Right Function
 function Copyright() {
@@ -73,29 +72,19 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Login = ({ open, setOpen }) => {
+const Login = ({ location, history }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [values, setValues] = useState({
 		showPassword: false,
 	});
-
 	// Redux
 	const dispatch = useDispatch();
 	const userLogin = useSelector((state) => state.userLogin);
 
 	// Decontructured userLogin data
 	const { loading, error, userInfo } = userLogin;
-
-	// React Router Dom
-	let history = useHistory();
-	let location = useLocation();
-	let { from } = location.state || { from: { pathname: '/' } };
-	const redirect = location.search ? location.search.split('=')[1] : '/animes';
-
-	const handleClose = () => {
-		setOpen(false);
-	};
+	const redirect = location.search ? location.search.split('=')[1] : '/';
 
 	// Showing Password
 	const handleClickShowPassword = () => {
@@ -110,10 +99,6 @@ const Login = ({ open, setOpen }) => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch(login(email, password));
-		console.log(error);
-		if (!error) {
-			history.replace(from);
-		}
 		//console.log(email, password);
 		// console.log('Redirection: ' + redirection);
 	};
@@ -122,28 +107,29 @@ const Login = ({ open, setOpen }) => {
 	const classes = useStyles();
 
 	useEffect(() => {
-		// If User Data exists on the state
 		if (userInfo) {
-			// Redirect them to /animes
 			history.push(redirect);
 		}
-		//console.log('Redirection: ' + redirect);
 	}, [history, userInfo, redirect]);
 
 	return (
 		<>
-			<Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
-				<div style={{ padding: '100px' }} className={classes.root}>
+			<div className="container">
+				<div className="card">
 					<div>{loading && <Loader />}</div>
-					<Avatar className={classes.avatar} style={{ margin: '0 auto' }}>
+					<Avatar className={classes.avatar} style={{ textAlign: 'center', margin: '0 auto' }}>
 						<LockOutlinedIcon />
 					</Avatar>
 
-					<div>
-						<Typography component="h1" variant="h5" style={{ textAlign: 'center', paddingTop: '10px' }}>
+					<Box>
+						<Typography
+							component="h1"
+							variant="h5"
+							style={{ textAlign: 'center', paddingTop: '10px', color: 'black' }}
+						>
 							Sign in
 						</Typography>
-					</div>
+					</Box>
 
 					<form onSubmit={submitHandler} className={classes.form} noValidate>
 						<TextField
@@ -152,8 +138,8 @@ const Login = ({ open, setOpen }) => {
 							helperText={error}
 							variant="outlined"
 							margin="normal"
-							required
 							fullWidth
+							required
 							label="Email Address"
 							name="email"
 							autoComplete="email"
@@ -185,8 +171,6 @@ const Login = ({ open, setOpen }) => {
 							/>
 						</FormControl>
 
-						<FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
-
 						<Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
 							Sign In
 						</Button>
@@ -199,8 +183,11 @@ const Login = ({ open, setOpen }) => {
 							</Grid>
 
 							<Grid item>
-								<Link component={RouterLink} to="/register">
-									{"Don't have an account? Sign Up"}{' '}
+								<Link
+									component={RouterLink}
+									to={redirect ? `/register?redirect=${redirect}` : '/register'}
+								>
+									Don't have an account? Sign up
 								</Link>
 							</Grid>
 						</Grid>
@@ -209,7 +196,7 @@ const Login = ({ open, setOpen }) => {
 				<Box mt={8}>
 					<Copyright />
 				</Box>
-			</Dialog>
+			</div>
 		</>
 	);
 };

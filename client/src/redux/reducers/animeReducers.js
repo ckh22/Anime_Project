@@ -44,7 +44,7 @@ export const animeListReducer = (state = { animes: [] }, action) => {
 	}
 };
 
-export const animeDetailsReducer = (state = { anime: { reviews: [] } }, action) => {
+export const animeDetailsReducer = (state = { anime: {} }, action) => {
 	switch (action.type) {
 		case ANIME_DETAILS_REQUEST:
 			return { ...state, loading: true };

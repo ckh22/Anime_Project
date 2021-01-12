@@ -13,6 +13,7 @@ import {
 	userDeleteReducer,
 	userUpdateReducer,
 } from './redux/reducers/userReducers';
+
 import {
 	animeListReducer,
 	animeDetailsReducer,
@@ -41,11 +42,11 @@ import {
 const reducer = combineReducers({
 	userLogin: userLoginReducer,
 	userRegister: userRegisterReducer,
-	userDetailsReducer: userDetailsReducer,
-	userUpdateProfileReducer: userUpdateProfileReducer,
-	userListReducer: userListReducer,
-	userDeleteReducer: userDeleteReducer,
-	userUpdateReducer: userUpdateReducer,
+	userList: userListReducer,
+	userDetails: userDetailsReducer,
+	userUpdateProfile: userUpdateProfileReducer,
+	userDelete: userDeleteReducer,
+	userUpdate: userUpdateReducer,
 	animeList: animeListReducer,
 	animeDetail: animeDetailsReducer,
 	animeCreate: animeCreateReducer,
@@ -64,11 +65,9 @@ const reducer = combineReducers({
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
-const animeInfoFromStorage = localStorage.getItem('animeInfo') ? JSON.parse(localStorage.getItem('animeInfo')) : null;
 
 const initialState = {
 	userLogin: { userInfo: userInfoFromStorage },
-	animeState: { animeInfo: animeInfoFromStorage },
 };
 
 const middleware = [thunk];
