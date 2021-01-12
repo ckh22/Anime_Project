@@ -9,8 +9,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
 	Avatar,
 	Button,
-	Container,
-	Dialog,
 	TextField,
 	FormControl,
 	InputLabel,
@@ -31,6 +29,9 @@ import Loader from '../Loader/Loader';
 
 // Actions Imports
 import { register } from '../../redux/actions/userActions';
+
+// Styles
+import './Register.css';
 
 function Copyright() {
 	return (
@@ -67,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Register = ({ open, setOpen }) => {
+const Register = ({ location, history }) => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [userName, setUserName] = useState('');
@@ -86,16 +87,10 @@ const Register = ({ open, setOpen }) => {
 
 	// Decontructured userLogin data
 	const { loading, error, userInfo } = userLogin;
+
 	// React Router Dom
-	let history = useHistory();
-	let location = useLocation();
 	let { from } = location.state || { from: { pathname: '/' } };
 	const redirect = location.search ? location.search.split('=')[1] : '/animes';
-
-	// Closing Modle
-	const handleClose = () => {
-		setOpen(false);
-	};
 
 	// Show Password
 	const handleShowPassword = () => {
@@ -139,166 +134,176 @@ const Register = ({ open, setOpen }) => {
 	}, [history, userInfo, redirect]);
 
 	return (
-		<div>
-			<Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
-				{loading ? (
-					<Loader />
-				) : (
-					<div style={{ padding: '100px' }}>
-						<Avatar className={classes.avatar} style={{ margin: '0 auto' }}>
-							<LockOutlinedIcon />
-						</Avatar>
-						<Typography
-							component="h1"
-							variant="h5"
-							style={{
-								textAlign: 'center',
-								paddingTop: '10px',
-							}}
-						>
-							Sign up
-						</Typography>
-
-						<form onSubmit={submitHandler} className={classes.form} noValidate>
-							<Grid container spacing={2}>
-								<Grid item xs={12} sm={6}>
-									<TextField
-										error={error ? true : false}
-										autoComplete="fname"
-										name="firstName"
-										variant="outlined"
-										required
-										fullWidth
-										id="firstName"
-										label="First Name"
-										autoFocus
-										onChange={(e) => setFirstName(e.target.value)}
-									/>
-								</Grid>
-								<Grid item xs={12} sm={6}>
-									<TextField
-										error={error ? true : false}
-										variant="outlined"
-										required
-										fullWidth
-										id="lastName"
-										label="Last Name"
-										name="lastName"
-										autoComplete="lname"
-										onChange={(e) => setLastName(e.target.value)}
-									/>
-								</Grid>
-								<Grid item xs={12}>
-									<TextField
-										error={error ? true : false}
-										variant="outlined"
-										required
-										fullWidth
-										id="userName"
-										label="Username"
-										name="userName"
-										autoComplete="uname"
-										onChange={(e) => setUserName(e.target.value)}
-									/>
-								</Grid>
-								<Grid item xs={12}>
-									<TextField
-										error={error ? true : false}
-										variant="outlined"
-										required
-										fullWidth
-										id="email"
-										label="Email Address"
-										name="email"
-										autoComplete="email"
-										onChange={(e) => setEmail(e.target.value)}
-									/>
-								</Grid>
-								<Grid item xs={12}>
-									<FormControl className={clsx(classes.textField, classes.form)} variant="outlined">
-										<InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-										<OutlinedInput
-											required
-											error={error ? true : false}
-											id="outlined-adornment-password"
-											type={values.showPassword ? 'text' : 'password'}
-											value={values.password}
-											onChange={(e) => setPassword(e.target.value)}
-											endAdornment={
-												<InputAdornment position="end">
-													<IconButton
-														aria-label="toggle password visibility"
-														onClick={handleShowPassword}
-														onMouseDown={handleMouseDownPassword}
-														edge="end"
-													>
-														{values.showPassword ? <Visibility /> : <VisibilityOff />}
-													</IconButton>
-												</InputAdornment>
-											}
-											labelWidth={70}
-											fullWidth
-										/>
-									</FormControl>
-								</Grid>
-								<Grid item xs={12}>
-									<FormControl className={clsx(classes.textField, classes.form)} variant="outlined">
-										<InputLabel htmlFor="outlined-adornment-password">Confirm Password</InputLabel>
-										<OutlinedInput
-											required
-											error={message ? true : false}
-											helperText={message}
-											id="outlined-adornment-password"
-											type={values.showConfirmPassword ? 'text' : 'password'}
-											value={values.confirmPassword}
-											onChange={(e) => setConfirmPassword(e.target.value)}
-											endAdornment={
-												<InputAdornment position="end">
-													<IconButton
-														aria-label="toggle password visibility"
-														onClick={handleShowConfirmPassword}
-														onMouseDown={handleMouseDownPassword}
-														edge="end"
-													>
-														{values.showConfirmPassword ? (
-															<Visibility />
-														) : (
-															<VisibilityOff />
-														)}
-													</IconButton>
-												</InputAdornment>
-											}
-											labelWidth={135}
-											fullWidth
-										/>
-									</FormControl>
-								</Grid>
-							</Grid>
-							<Button
-								type="submit"
-								fullWidth
-								variant="contained"
-								color="primary"
-								className={classes.submit}
+		<>
+			<div className="register_container">
+				<div className="register_card">
+					{loading ? (
+						<Loader />
+					) : (
+						<div>
+							<Avatar className={classes.avatar} style={{ textAlign: 'center', margin: '0 auto' }}>
+								<LockOutlinedIcon />
+							</Avatar>
+							<Typography
+								component="h1"
+								variant="h5"
+								style={{
+									textAlign: 'center',
+									paddingTop: '10px',
+									color: 'black',
+								}}
 							>
-								Sign Up
-							</Button>
-							<Grid container justify="flex-end">
-								<Grid item>
-									<Link component={RouterLink} to="/login">
-										Already have an account? Sign in
-									</Link>
-								</Grid>
-							</Grid>
-						</form>
-					</div>
-				)}
+								Sign up
+							</Typography>
 
+							<form onSubmit={submitHandler} className={classes.form} noValidate>
+								<Grid container spacing={2}>
+									<Grid item xs={12} sm={6}>
+										<TextField
+											error={error ? true : false}
+											autoComplete="fname"
+											name="firstName"
+											variant="outlined"
+											required
+											fullWidth
+											id="firstName"
+											label="First Name"
+											autoFocus
+											onChange={(e) => setFirstName(e.target.value)}
+										/>
+									</Grid>
+									<Grid item xs={12} sm={6}>
+										<TextField
+											error={error ? true : false}
+											variant="outlined"
+											required
+											fullWidth
+											id="lastName"
+											label="Last Name"
+											name="lastName"
+											autoComplete="lname"
+											onChange={(e) => setLastName(e.target.value)}
+										/>
+									</Grid>
+									<Grid item xs={12}>
+										<TextField
+											error={error ? true : false}
+											variant="outlined"
+											required
+											fullWidth
+											id="userName"
+											label="Username"
+											name="userName"
+											autoComplete="uname"
+											onChange={(e) => setUserName(e.target.value)}
+										/>
+									</Grid>
+									<Grid item xs={12}>
+										<TextField
+											error={error ? true : false}
+											variant="outlined"
+											required
+											fullWidth
+											id="email"
+											label="Email Address"
+											name="email"
+											autoComplete="email"
+											onChange={(e) => setEmail(e.target.value)}
+										/>
+									</Grid>
+									<Grid item xs={12}>
+										<FormControl
+											className={clsx(classes.textField, classes.form)}
+											variant="outlined"
+										>
+											<InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+											<OutlinedInput
+												required
+												error={error ? true : false}
+												id="outlined-adornment-password"
+												type={values.showPassword ? 'text' : 'password'}
+												value={values.password}
+												onChange={(e) => setPassword(e.target.value)}
+												endAdornment={
+													<InputAdornment position="end">
+														<IconButton
+															aria-label="toggle password visibility"
+															onClick={handleShowPassword}
+															onMouseDown={handleMouseDownPassword}
+															edge="end"
+														>
+															{values.showPassword ? <Visibility /> : <VisibilityOff />}
+														</IconButton>
+													</InputAdornment>
+												}
+												labelWidth={70}
+												fullWidth
+											/>
+										</FormControl>
+									</Grid>
+									<Grid item xs={12}>
+										<FormControl
+											className={clsx(classes.textField, classes.form)}
+											variant="outlined"
+										>
+											<InputLabel htmlFor="outlined-adornment-password">
+												Confirm Password
+											</InputLabel>
+											<OutlinedInput
+												required
+												error={message ? true : false}
+												helperText={message}
+												id="outlined-adornment-password"
+												type={values.showConfirmPassword ? 'text' : 'password'}
+												value={values.confirmPassword}
+												onChange={(e) => setConfirmPassword(e.target.value)}
+												endAdornment={
+													<InputAdornment position="end">
+														<IconButton
+															aria-label="toggle password visibility"
+															onClick={handleShowConfirmPassword}
+															onMouseDown={handleMouseDownPassword}
+															edge="end"
+														>
+															{values.showConfirmPassword ? (
+																<Visibility />
+															) : (
+																<VisibilityOff />
+															)}
+														</IconButton>
+													</InputAdornment>
+												}
+												labelWidth={135}
+												fullWidth
+											/>
+										</FormControl>
+									</Grid>
+								</Grid>
+								<Button
+									type="submit"
+									fullWidth
+									variant="contained"
+									color="primary"
+									className={classes.submit}
+								>
+									Sign Up
+								</Button>
+								<Grid container justify="flex-end">
+									<Grid item>
+										<Link component={RouterLink} to="/login">
+											Already have an account? Sign in
+										</Link>
+									</Grid>
+								</Grid>
+							</form>
+						</div>
+					)}
+				</div>
 				<Box mt={5}>
 					<Copyright />
 				</Box>
-			</Dialog>
-		</div>
+			</div>
+		</>
 	);
 };
 
