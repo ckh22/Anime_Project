@@ -83,7 +83,7 @@ const AnimeDetails = ({ match }) => {
 								color="primary"
 								variant="outlined"
 								component={RouterLink}
-								to={`/animes/${match.params.id}/edit`}
+								to={`/anime/${match.params.id}/edit`}
 							>
 								Edit
 							</Button>

@@ -1,7 +1,7 @@
 // Dependencies Imports
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink, useHistory, useLocation } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 
 // Material UI Core Imports
@@ -85,7 +85,7 @@ const Register = ({ location, history }) => {
 	const dispatch = useDispatch();
 	const userLogin = useSelector((state) => state.userLogin);
 
-	// Decontructured userLogin data
+	// Deconstructing userLogin data
 	const { loading, error, userInfo } = userLogin;
 
 	// React Router Dom

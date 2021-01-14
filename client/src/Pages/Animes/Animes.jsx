@@ -1,22 +1,24 @@
 // Dependencies
-import React, { useEffect} from 'react';
-import './Animes.css'
+import React, { useEffect } from 'react';
 
-// Components
-import Message from '../../Components/Message/Message';
-import Loader from '../../Components/Loader/Loader';
-import Anime from './Anime/Anime';
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
 
 // Material UI Core
 // import {Grid, Paper} from '@material-ui/core';
 // import {makeStyles} from '@material-ui/core/styles';
 
-// Redux
-import {useDispatch, useSelector} from 'react-redux';
+// Components
+import Message from '../../Components/Message/Message';
+import Loader from '../../Components/Loader/Loader';
+import AnimeCard from './AnimeCard/AnimeCard';
+import CarouselFormat from '../../Components/Carousel/CarouselFormat';
 
 // Actions
-import {listAnimes} from '../../redux/actions/animeActions';
-import CarouselFormat from '../../Components/Carousel/CarouselFormat'
+import { listAnimes } from '../../redux/actions/animeActions';
+
+// Styles
+import './Animes.css';
 
 // const useStyles = makeStyles((theme) => ({
 //     root: {
@@ -31,68 +33,54 @@ import CarouselFormat from '../../Components/Carousel/CarouselFormat'
 //     }
 // }));
 
-const Animes = ({history, match}) => {
-    // Page number for pagination later on
-    // const pageNumber = match.params.pageNumber || 1;
+const Animes = ({ history, match }) => {
+	// Page number for pagination later on
+	// const pageNumber = match.params.pageNumber || 1;
 
-    // Redux
-    const dispatch = useDispatch();
-    const animeList = useSelector((state) => state.animeList);
-    
+	// Redux
+	const dispatch = useDispatch();
+	const animeList = useSelector((state) => state.animeList);
 
-    // Decontructing animeDetails on Redux store
-    const {loading, error, animes} = animeList;
+	// Decontructing animeDetails on Redux store
+	const { loading, error, animes } = animeList;
 
-    // Material UI Core
-    // const classes = useStyles();
+	// Material UI Core
+	// const classes = useStyles();
 
-    // Effect
-    useEffect(() => {
-        dispatch(listAnimes());
-    }, [dispatch]);
+	// Effect
+	useEffect(() => {
+		dispatch(listAnimes());
+	}, [dispatch]);
 
-    
-
-    return (
-        <div className='main'>
-            <div className="anime-content">
-                <ul className='sub-nav'>
-                    <li>Winter 2021 Anime</li>
-                    <li>Popular</li>
-                    <li>By Decade</li>
-                    <li>Community</li>
-                </ul>
-                {
-                loading ? (
-                    <Loader/>) : error ? (
-                    <Message variant="error">
-                        {error}</Message>
-                ) : (
-                    <div className='container'>
-                        <CarouselFormat/>
-                        <div className="popular">
-                            Hot 🔥
-                        </div>
-                        <div className="animes-flex">
-                            {
-                            animes.map((anime) => (
-
-                                <div><Anime anime={anime}
-                                        className='item-b'
-                                        key={
-                                            anime._id
-                                        }/><div>{
-                                        anime.title
-                                    }</div>
-                                </div>
-
-                            ))
-                        } </div>
-                    </div>
-                )
-            } </div>
-        </div>
-
-    );
+	return (
+		<div className="main">
+			<div className="anime-content">
+				<ul className="sub-nav">
+					<li>Winter 2021 Anime</li>
+					<li>Popular</li>
+					<li>By Decade</li>
+					<li>Community</li>
+				</ul>
+				{loading ? (
+					<Loader />
+				) : error ? (
+					<Message variant="error">{error}</Message>
+				) : (
+					<div className="container">
+						<CarouselFormat />
+						<div className="popular">Hot 🔥</div>
+						<div className="animes-flex">
+							{animes.map((anime) => (
+								<div>
+									<AnimeCard anime={anime} className="item-b" key={anime._id} />
+								</div>
+							))}{' '}
+						</div>
+					</div>
+				)}{' '}
+			</div>
+		</div>
+	);
 };
+
 export default Animes;
