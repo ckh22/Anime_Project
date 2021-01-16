@@ -31,7 +31,7 @@ import Link from '@material-ui/core/Link';
 import Loader from '../../../Components/Loader/Loader';
 
 // Style
-import './AnimeDetails.scss';
+import './AnimeDetails.css';
 
 // Actions Imports
 import { listAnimeDetails } from '../../../redux/actions/animeActions';

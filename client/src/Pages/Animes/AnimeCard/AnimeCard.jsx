@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Style
-import './AnimeCard.scss';
+import './AnimeCard.css';
 
 const AnimeCard = ({ anime }) => {
 	return (

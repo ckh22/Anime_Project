@@ -10,6 +10,7 @@ nav {
 }
 
 .nav-container {
+  float: left;
   width: 100%;
   margin: 0 auto;
   display: -webkit-box;
@@ -24,8 +25,6 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0;
-  margin: 0;
   white-space: nowrap;
   list-style-type: none;
 }
@@ -37,6 +36,12 @@ nav {
 #links {
   color: white;
   position: relative;
+  overflow: hidden;
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 .company-info {
@@ -45,6 +50,7 @@ nav {
   display: flex;
   color: white;
   white-space: nowrap;
+  padding: 1em;
 }
 
 .company-name {
@@ -64,6 +70,7 @@ nav {
 
 .menu {
   color: white;
+  padding: 1em;
 }
 
 .menu_button {
