@@ -2,31 +2,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// React Burger Menu
+// https://github.com/negomi/react-burger-menu
+import { slide as Slide } from 'react-burger-menu';
+
 // Material UI Core Imports
-import { makeStyles } from '@material-ui/core/styles';
-import {
-	Avatar,
-	Button,
-	Dialog,
-	TextField,
-	FormControl,
-	InputLabel,
-	OutlinedInput,
-	InputAdornment,
-	IconButton,
-	Menu,
-	MenuItem,
-	Grid,
-	Box,
-	Typography,
-	Container,
-} from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-// Components Imports
-import Login from '../Auth/Login';
-import Register from '../Auth/Register';
+import { Button, Menu, MenuItem } from '@material-ui/core';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,23 +20,20 @@ import { logout } from '../../redux/actions/userActions';
 
 const Navbar = () => {
 	const [anchorEl, setAnchorEl] = useState(null);
-	const [loginOpen, setLoginOpen] = useState(false);
-	const [registerOpen, setRegisterOpen] = useState(false);
 
+	// Redux
 	const dispatch = useDispatch();
 	const userLogin = useSelector((state) => state.userLogin);
+
+	// Deconstructing userLogin data
 	const { userInfo } = userLogin;
+
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
+
 	const handleClose = () => {
 		setAnchorEl(null);
-	};
-	const handleClickShowLogin = () => {
-		setLoginOpen(!loginOpen);
-	};
-	const handleClickShowRegister = () => {
-		setRegisterOpen(!registerOpen);
 	};
 
 	const logoutHandler = () => {
@@ -96,46 +74,48 @@ const Navbar = () => {
 							Want to help?
 						</Link>
 					</li>
+					<li>
+						{userInfo ? (
+							<div className="menu">
+								<Button
+									className="nav-link"
+									id="links"
+									aria-controls="simple-menu"
+									aria-haspopup="true"
+									onClick={handleClick}
+								>
+									Open Menu
+								</Button>
+								<Menu
+									id="simple-menu"
+									anchorEl={anchorEl}
+									keepMounted
+									open={Boolean(anchorEl)}
+									onClose={handleClose}
+								>
+									<MenuItem onClick={handleClose}>Profile</MenuItem>
+									<MenuItem onClick={handleClose}>My Account</MenuItem>
+									<MenuItem onClick={logoutHandler}>Logout</MenuItem>
+								</Menu>
+							</div>
+						) : (
+							<div className="btn-auth">
+								<ul className="nav-links">
+									<li className="nav-link">
+										<Link to="/login" id="links">
+											Login
+										</Link>
+									</li>
+									<li className="nav-link">
+										<Link to="/register" id="links">
+											Register
+										</Link>
+									</li>
+								</ul>
+							</div>
+						)}
+					</li>
 				</ul>
-				{userInfo ? (
-					<div className="menu">
-						<Button
-							className="nav-link"
-							id="links"
-							aria-controls="simple-menu"
-							aria-haspopup="true"
-							onClick={handleClick}
-						>
-							Open Menu
-						</Button>
-						<Menu
-							id="simple-menu"
-							anchorEl={anchorEl}
-							keepMounted
-							open={Boolean(anchorEl)}
-							onClose={handleClose}
-						>
-							<MenuItem onClick={handleClose}>Profile</MenuItem>
-							<MenuItem onClick={handleClose}>My Account</MenuItem>
-							<MenuItem onClick={logoutHandler}>Logout</MenuItem>
-						</Menu>
-					</div>
-				) : (
-					<div className="btn-auth">
-						<ul className="nav-links">
-							<li className="nav-link">
-								<Link to="/login" id="links">
-									Login
-								</Link>
-							</li>
-							<li className="nav-link">
-								<Link to="/register" id="links">
-									Register
-								</Link>
-							</li>
-						</ul>
-					</div>
-				)}{' '}
 			</div>
 		</nav>
 	);

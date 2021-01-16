@@ -31,7 +31,7 @@ import Link from '@material-ui/core/Link';
 import Loader from '../../../Components/Loader/Loader';
 
 // Style
-import './AnimeDetails.css';
+import './AnimeDetails.scss';
 
 // Actions Imports
 import { listAnimeDetails } from '../../../redux/actions/animeActions';
@@ -83,7 +83,7 @@ const AnimeDetails = ({ match }) => {
 								color="primary"
 								variant="outlined"
 								component={RouterLink}
-								to={`/animes/${match.params.id}/edit`}
+								to={`/anime/${match.params.id}/edit`}
 							>
 								Edit
 							</Button>

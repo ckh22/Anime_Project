@@ -78,7 +78,7 @@ const Login = ({ location, history }) => {
 	const [values, setValues] = useState({
 		showPassword: false,
 	});
-	
+
 	// Redux
 	const dispatch = useDispatch();
 	const userLogin = useSelector((state) => state.userLogin);
@@ -115,8 +115,8 @@ const Login = ({ location, history }) => {
 
 	return (
 		<>
-			<div className="container">
-				<div className="card">
+			<div className="login_container">
+				<div className="login_card">
 					<div>{loading && <Loader />}</div>
 					<Avatar className={classes.avatar} style={{ textAlign: 'center', margin: '0 auto' }}>
 						<LockOutlinedIcon />
