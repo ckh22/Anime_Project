@@ -32,7 +32,7 @@ import Register from '../Auth/Register';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Style
-import './Navbar.css';
+import './scss/Navbar.css';
 
 // Actions
 import { logout } from '../../redux/actions/userActions';
@@ -67,7 +67,7 @@ const Navbar = () => {
 			<div className="nav-container">
 				<div className="company-info">
 					<div className="logo">logo</div>
-					<div className="company-name">Anime Station</div>
+					<div className="company-name">AniTime</div>
 				</div>
 				<ul className="nav-links">
 					<li className="nav-link">

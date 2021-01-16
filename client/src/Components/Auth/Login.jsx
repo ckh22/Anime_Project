@@ -33,7 +33,7 @@ import Loader from '../Loader/Loader';
 import { login } from '../../redux/actions/userActions';
 
 // Style
-import './Login.css';
+import './scss/Login.css';
 
 // Copy Right Function
 function Copyright() {

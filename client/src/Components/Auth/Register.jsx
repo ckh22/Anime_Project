@@ -31,7 +31,7 @@ import Loader from '../Loader/Loader';
 import { register } from '../../redux/actions/userActions';
 
 // Styles
-import './Register.css';
+import './scss/Register.css';
 
 function Copyright() {
 	return (

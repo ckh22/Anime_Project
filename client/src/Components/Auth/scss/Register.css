@@ -1,0 +1,12 @@
+.register_container {
+  padding: 100px;
+}
+
+.register_card {
+  margin: 0 auto;
+  padding: 100px;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 400px;
+}
+/*# sourceMappingURL=Register.css.map */

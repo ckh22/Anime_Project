@@ -1,0 +1,13 @@
+.images {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.carousel-slider {
+  height: 50vh;
+}
+
+.thumbs-wrapper {
+  display: none;
+}
+/*# sourceMappingURL=CarouselFormat.css.map */

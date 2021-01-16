@@ -17,6 +17,7 @@ export default function Homepage() {
     }, [dispatch])
     return (
         <div className='main'>
+            <div className="color">
             {
             loading ? (
                 <Loader/>) : error ? (
@@ -79,6 +80,8 @@ export default function Homepage() {
                     <section className="five"></section>
                 </>
             )
-        } </div>
+        }
+            </div>
+        </div>
     )
 }

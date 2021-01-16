@@ -1,7 +1,12 @@
 .one {
     padding-top: 75px;
     height: 93.22304vh;
-    background: rgb(7, 7, 7);
+}
+
+.color {
+    height: 92.5vh;
+    background: linear-gradient(45deg, rgb(31, 93, 121), transparent);
+    overflow: scroll;
 }
 
 .leaderboard-container {
@@ -38,7 +43,6 @@
 
 .two {
     height: 100vh;
-    background: rgb(7, 7, 7);
 }
 
 .grid-two {
