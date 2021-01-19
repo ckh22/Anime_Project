@@ -14,11 +14,11 @@ const StudioSchema = new Schema({
 	location: {
 		type: String,
 	},
-	
+
 	date: {
 		type: Date,
 		default: Date.now,
 	},
 });
 
-module.exports = Profile = mongoose.model('profile', ProfileSchema);
+module.exports = Studio = mongoose.model('Studio', StudioSchema);

@@ -1,14 +1,14 @@
 import asyncHandler from 'express-async-handler';
-import Profile from '../models/animeModel.js';
-
+import Profile from '../models/profileModel.js';
+import path from 'path';
 
 // @desc    Get user profile
 // @route   GET /api/profile/me
 // @access  Private
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
 	const profile = await Profile.findOne({
-		user: req.user.id,
-	}).populate('user', ['name', 'avatar']);
+		user: req.user._id,
+	}).populate('user', ['userName']);
 
 	// If profile exists
 	if (profile) {
@@ -74,12 +74,26 @@ const allUserProfiles = asyncHandler(async (req, res) => {
 	}
 });
 
-// @route      GET api/profile/user/user_id
-// @desc       Get profile by user ID
-// @access     Public
+// @route      POST api/profile/create
+// @desc       Create a profile
+// @access     Private
 const createUserProfile = asyncHandler(async (req, res) => {
-	try {
-	} catch (error) {}
-	console.log('hi from createUserProfiel');
+	const profile = new Profile({
+		user: req.user._id,
+		displayName: req.user.userName,
+		profileImage: '/images/sample.jpg',
+		biography: 'Add a biography',
+		location: 'Pick a location',
+		social: {
+			youtube: 'youtube.com',
+			twitter: 'twitter.com',
+			facebook: 'facebook.com',
+			instagram: 'instagram.com',
+			twitch: 'twitch.com',
+		},
+	});
+	const createdProfile = await profile.save();
+	res.status(201).json(createdProfile);
 });
+
 export { getCurrentUserProfile, updateUserProfile, allUserProfiles, createUserProfile, getUserProfileById };

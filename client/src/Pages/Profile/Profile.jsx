@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink, useHistory, useLocation } from 'react-router-dom';
-import clsx from 'clsx';
 
 // Material UI Core Imports
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {
 	Avatar,
@@ -30,9 +30,10 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 // Components Imports
 import Loader from '../../Components/Loader/Loader';
+import Message from '../../Components/Message/Message';
 
 // Actions Imports
-import { register } from '../../redux/actions/userActions';
+import { getCurrentUserProfile } from '../../redux/actions/profileActions';
 
 // Material UI Core Styles
 const useStyles = makeStyles((theme) => ({
@@ -57,35 +58,56 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Profile = () => {
-	const [anchorEl, setAnchorEl] = React.useState(null);
+const Profile = ({ match, history }) => {
+	const [anchorEl, setAnchorEl] = useState(null);
+
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+
 	// Redux
 	const dispatch = useDispatch();
+	const profileDetails = useSelector((state) => state.profileDetails);
 	const userLogin = useSelector((state) => state.userLogin);
 
-	// Decontructured userLogin data
-	const { loading, error, userInfo } = userLogin;
+	// Decontructured data
+	const { loading, error, profile } = profileDetails;
+	const { userInfo } = userLogin;
 
 	// Material UI Core
 	const classes = useStyles();
 
+	useEffect(() => {
+		if (!userInfo) {
+			history.push('/login');
+		}
+		if (!profile._id || profile._id !== match.params.id) {
+			dispatch(getCurrentUserProfile(match.params.id));
+		}
+	}, [dispatch, match, profile._id]);
+
 	return (
-		<Container maxWidth="sm">
-			<Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-				Open Menu
-			</Button>
-			<Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-				<MenuItem onClick={handleClose}>Profile</MenuItem>
-				<MenuItem onClick={handleClose}>My account</MenuItem>
-				<MenuItem onClick={handleClose}>Logout</MenuItem>
-			</Menu>
-		</Container>
+		<>
+			<Container maxWidth="sm">
+				{loading ? (
+					<Loader />
+				) : error ? (
+					<Message variant="danger">{error}</Message>
+				) : (
+					<div className="profile_container">
+						<h1>{profile.displayName}</h1>
+						<img src={profile.profileImage} alt={profile.title} />
+						<p>{profile.location}</p>
+						<p>{profile.biography}</p>
+						
+
+					</div>
+				)}
+			</Container>
+		</>
 	);
 };
 

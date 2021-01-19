@@ -1,10 +1,16 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const ProfileSchema = new Schema({
+const profileSchema = new Schema({
 	user: {
 		type: Schema.Types.ObjectId,
 		ref: 'user',
+	},
+	displayName: {
+		type: String,
+	},
+	profileImage: {
+		type: String,
 	},
 	biography: {
 		type: String,
@@ -30,7 +36,7 @@ const ProfileSchema = new Schema({
 		},
 		website: {
 			type: String,
-		}
+		},
 	},
 	date: {
 		type: Date,
@@ -38,4 +44,6 @@ const ProfileSchema = new Schema({
 	},
 });
 
-module.exports = Profile = mongoose.model('profile', ProfileSchema);
+const Profile = mongoose.model('Profile', profileSchema);
+
+export default Profile;

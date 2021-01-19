@@ -1,8 +1,8 @@
 // Dependencies
+import path from 'path';
 import colors from 'colors';
 import dotenv from 'dotenv';
 import express from 'express';
-
 // import path from 'path';
 import connectDB from './config/database.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
@@ -14,6 +14,8 @@ import userRoutes from './routes/userRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
 import voiceActorRoutes from './routes/voiceActorRoutes.js';
 import topAnimeRoutes from './routes/topAnimeRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
+
 
 // Temporary Data
 // import users from './data/users.js';
@@ -44,6 +46,10 @@ app.use('/api/users', userRoutes);
 app.use('/api/voiceActors', voiceActorRoutes);
 app.use('/api/topAnimes', topAnimeRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/upload', uploadRoutes);
+
+const __dirname = path.resolve();
+app.use('/temp', express.static(path.join(__dirname, '/temp')));
 
 // Middleware
 app.use(notFound);

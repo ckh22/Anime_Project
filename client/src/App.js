@@ -7,13 +7,14 @@ import AnimeDetails from './Pages/Animes/AnimeDetails/AnimeDetails';
 import Animes from './Pages/Animes/Animes';
 import Characters from './Pages/Characters/Characters';
 import Donate from './Pages/Donate/Donate';
-import EditAnime from './Pages/Animes/Controller/EditAnime/EditAnime';
+import EditAnime from './Pages/Animes/Controllers/EditAnime/EditAnime';
 import Homepage from './Pages/Homepage/Homepage';
 import Navbar from './Components/Navbar/Navbar';
 import Login from './Components/Auth/Login';
 import Register from './Components/Auth/Register';
 import Studios from './Pages/Studios/Studios';
 import VoiceActors from './Pages/VoiceActors/VoiceActors';
+import Profile from './Pages/Profile/Profile';
 
 // Style
 import './App.css';
@@ -36,6 +37,7 @@ function App() {
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/studios" component={Studios} />
 						<Route exact path="/voiceActors" component={VoiceActors} />
+						<Route exact path="/profile" component={Profile} />
 					</>
 				)}
 			/>

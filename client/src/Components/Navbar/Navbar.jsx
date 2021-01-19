@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // React Burger Menu
 // https://github.com/negomi/react-burger-menu
-import { slide as Slide } from 'react-burger-menu';
+// import { slide as Slide } from 'react-burger-menu';
 
 // Material UI Core Imports
 import { Button, Menu, MenuItem } from '@material-ui/core';
@@ -93,7 +93,9 @@ const Navbar = () => {
 									open={Boolean(anchorEl)}
 									onClose={handleClose}
 								>
-									<MenuItem onClick={handleClose}>Profile</MenuItem>
+									<Link to={``}>
+										<MenuItem onClick={handleClose}>Profile</MenuItem>
+									</Link>
 									<MenuItem onClick={handleClose}>My Account</MenuItem>
 									<MenuItem onClick={logoutHandler}>Logout</MenuItem>
 								</Menu>
