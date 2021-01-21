@@ -1,7 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
-
+import Profile from '../models/profileModel.js';
 // @desc    Auth user & get token
 // @route   POST /api/users/login
 // @access  Public
@@ -46,20 +46,26 @@ const registerUser = asyncHandler(async (req, res) => {
 		email,
 		password,
 	});
-
-	
+	const createdUser = await user.save();
+	const profile = await Profile.create({
+		user: createdUser,
+		displayName: userName,
+		profileImage: '/images/sample.jpg',
+		biography: 'Add a biography',
+		location: 'Pick a location',
+		social: {
+			youtube: 'youtube.com',
+			twitter: 'twitter.com',
+			facebook: 'facebook.com',
+			instagram: 'instagram.com',
+			twitch: 'twitch.com',
+		},
+	});
+	const createdProfile = await profile.save();
 	if (user) {
-		res.status(201).json({
-			_id: user._id,
-			firstName: user.firstName,
-			lastName: user.lastName,
-			userName: user.userName,
-			email: user.email,
-			isAdmin: user.isAdmin,
-			token: generateToken(user._id),
-		});
+		res.status(201).json({ createdUser, createdProfile });
 	} else {
-		res.status(400);
+		res.status(500);
 		throw new Error('Invalid user data');
 	}
 });

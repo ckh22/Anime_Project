@@ -21,4 +21,6 @@ const StudioSchema = new Schema({
 	},
 });
 
-module.exports = Studio = mongoose.model('Studio', StudioSchema);
+const Studio = mongoose.model('Studio', studioSchema);
+
+export default Studio;

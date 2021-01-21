@@ -6,10 +6,10 @@ import path from 'path';
 // @route   GET /api/profile/me
 // @access  Private
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
+	// 1. find profile with req.user._id
 	const profile = await Profile.findOne({
-		user: req.user._id,
+		user: req.user.id,
 	}).populate('user', ['userName']);
-
 	// If profile exists
 	if (profile) {
 		res.json(profile);
@@ -17,8 +17,6 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
 		res.status(500);
 		throw new Error('Profile not found');
 	}
-	// If is profile
-	res.json(profile);
 });
 
 // @desc    Get one user profile by ID
@@ -78,22 +76,30 @@ const allUserProfiles = asyncHandler(async (req, res) => {
 // @desc       Create a profile
 // @access     Private
 const createUserProfile = asyncHandler(async (req, res) => {
-	const profile = new Profile({
+	const validator = await Profile.findOne({
 		user: req.user._id,
-		displayName: req.user.userName,
-		profileImage: '/images/sample.jpg',
-		biography: 'Add a biography',
-		location: 'Pick a location',
-		social: {
-			youtube: 'youtube.com',
-			twitter: 'twitter.com',
-			facebook: 'facebook.com',
-			instagram: 'instagram.com',
-			twitch: 'twitch.com',
-		},
-	});
-	const createdProfile = await profile.save();
-	res.status(201).json(createdProfile);
+	}).populate('user', ['userName']);
+	if (validator) {
+		const profile = new Profile({
+			user: req.user._id,
+			displayName: req.user.userName,
+			profileImage: '/images/sample.jpg',
+			biography: 'Add a biography',
+			location: 'Pick a location',
+			social: {
+				youtube: 'youtube.com',
+				twitter: 'twitter.com',
+				facebook: 'facebook.com',
+				instagram: 'instagram.com',
+				twitch: 'twitch.com',
+			},
+		});
+		const createdProfile = await profile.save();
+		res.status(201).json(createdProfile);
+	} else {
+		res.status(404);
+		throw new Error('Profile already exists');
+	}
 });
 
 export { getCurrentUserProfile, updateUserProfile, allUserProfiles, createUserProfile, getUserProfileById };

@@ -1,5 +1,5 @@
 // Dependencies Imports
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 // React Burger Menu
@@ -7,38 +7,21 @@ import { Link } from 'react-router-dom';
 // import { slide as Slide } from 'react-burger-menu';
 
 // Material UI Core Imports
-import { Button, Menu, MenuItem } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 
 // Redux
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // Style
 import './scss/Navbar.css';
 
-// Actions
-import { logout } from '../../redux/actions/userActions';
-
 const Navbar = () => {
-	const [anchorEl, setAnchorEl] = useState(null);
-
+	
 	// Redux
-	const dispatch = useDispatch();
 	const userLogin = useSelector((state) => state.userLogin);
 
 	// Deconstructing userLogin data
 	const { userInfo } = userLogin;
-
-	const handleClick = (event) => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
-	const logoutHandler = () => {
-		dispatch(logout());
-	};
 
 	return (
 		<nav>
@@ -74,49 +57,31 @@ const Navbar = () => {
 							Want to help?
 						</Link>
 					</li>
-					<li>
-						{userInfo ? (
-							<div className="menu">
-								<Button
-									className="nav-link"
-									id="links"
-									aria-controls="simple-menu"
-									aria-haspopup="true"
-									onClick={handleClick}
-								>
-									Open Menu
-								</Button>
-								<Menu
-									id="simple-menu"
-									anchorEl={anchorEl}
-									keepMounted
-									open={Boolean(anchorEl)}
-									onClose={handleClose}
-								>
-									<Link to={``}>
-										<MenuItem onClick={handleClose}>Profile</MenuItem>
+					{userInfo ? (
+						<Box>
+							<li>
+								<Link to="/profile">Profile</Link>
+							</li>
+							<li>
+								<Link to="/account">My Account</Link>
+							</li>
+						</Box>
+					) : (
+						<div className="btn-auth">
+							<ul className="nav-links">
+								<li className="nav-link">
+									<Link to="/login" id="links">
+										Login
 									</Link>
-									<MenuItem onClick={handleClose}>My Account</MenuItem>
-									<MenuItem onClick={logoutHandler}>Logout</MenuItem>
-								</Menu>
-							</div>
-						) : (
-							<div className="btn-auth">
-								<ul className="nav-links">
-									<li className="nav-link">
-										<Link to="/login" id="links">
-											Login
-										</Link>
-									</li>
-									<li className="nav-link">
-										<Link to="/register" id="links">
-											Register
-										</Link>
-									</li>
-								</ul>
-							</div>
-						)}
-					</li>
+								</li>
+								<li className="nav-link">
+									<Link to="/register" id="links">
+										Register
+									</Link>
+								</li>
+							</ul>
+						</div>
+					)}
 				</ul>
 			</div>
 		</nav>

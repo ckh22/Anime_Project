@@ -119,9 +119,6 @@ const CreateAnime = () => {
 							<MenuItem value="">
 								<em>None</em>
 							</MenuItem>
-							{genreData.map((genre) => (
-								<MenuItem>{genre}</MenuItem>
-							))}
 						</Select>
 						<FormHelperText>Error</FormHelperText>
 					</FormControl>

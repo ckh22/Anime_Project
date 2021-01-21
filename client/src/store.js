@@ -37,6 +37,13 @@ import {
 	topAnimeUpdateReducer,
 } from './redux/reducers/topAnimeReducers';
 
+import {
+	profileListReducer,
+	profileDetailsReducer,
+	profileCreateReducer,
+	profileUpdateReducer,
+} from './redux/reducers/profileReducers';
+
 // Reducers
 const reducer = combineReducers({
 	userLogin: userLoginReducer,
@@ -60,6 +67,10 @@ const reducer = combineReducers({
 	topAnimeCreate: topAnimeCreateReducer,
 	topAnimeUpdate: topAnimeUpdateReducer,
 	topAnimeDelete: topAnimeDeleteReducer,
+	profileList: profileListReducer,
+	profileDetails: profileDetailsReducer,
+	profileCreate: profileCreateReducer,
+	profileUpdateReducer: profileUpdateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
