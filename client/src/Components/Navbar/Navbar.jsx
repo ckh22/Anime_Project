@@ -16,7 +16,6 @@ import { useSelector } from 'react-redux';
 import './scss/Navbar.css';
 
 const Navbar = () => {
-	
 	// Redux
 	const userLogin = useSelector((state) => state.userLogin);
 
@@ -24,51 +23,55 @@ const Navbar = () => {
 	const { userInfo } = userLogin;
 
 	return (
-		<nav>
-			<div className="nav-container">
-				<div className="company-info">
-					<div className="logo">logo</div>
-					<div className="company-name">AniTime</div>
-				</div>
-				<ul className="nav-links">
-					<li className="nav-link">
-						<Link to={`/`} id="links">
-							Home
-						</Link>
-					</li>
-					<li className="nav-link">
-						<Link to={`/animes`} id="links">
-							Animes
-						</Link>
-					</li>
-					<li className="nav-link">
-						<Link to={`/studios`} id="links">
-							Studios
-						</Link>
-					</li>
-					<li className="nav-link">
-						<Link to={`/voiceActors`} id="links">
-							Voice Actors
-						</Link>
-					</li>
+		<Box>
+			<nav>
+				<div className="nav-container">
+					<div className="company-info">
+						<div className="logo">logo</div>
+						<div className="company-name">AniTime</div>
+					</div>
+					<ul className="nav-links">
+						<li className="nav-link">
+							<Link to={`/`} id="links">
+								Home
+							</Link>
+						</li>
+						<li className="nav-link">
+							<Link to={`/animes`} id="links">
+								Animes
+							</Link>
+						</li>
+						<li className="nav-link">
+							<Link to={`/studios`} id="links">
+								Studios
+							</Link>
+						</li>
+						<li className="nav-link">
+							<Link to={`/voiceActors`} id="links">
+								Voice Actors
+							</Link>
+						</li>
 
-					<li className="nav-link">
-						<Link to={`/donate`} id="links">
-							Want to help?
-						</Link>
-					</li>
-					{userInfo ? (
-						<Box>
-							<li>
-								<Link to="/profile">Profile</Link>
-							</li>
-							<li>
-								<Link to="/account">My Account</Link>
-							</li>
-						</Box>
-					) : (
-						<div className="btn-auth">
-							<ul className="nav-links">
+						<li className="nav-link">
+							<Link to={`/donate`} id="links">
+								Want to help?
+							</Link>
+						</li>
+						{userInfo ? (
+							<Box>
+								<li className="nav-link">
+									<Link to={`/profile`} id="links">
+										Profile
+									</Link>
+								</li>
+								<li>
+									<Link to={`/account`} id="links">
+										My Account
+									</Link>
+								</li>
+							</Box>
+						) : (
+							<Box>
 								<li className="nav-link">
 									<Link to="/login" id="links">
 										Login
@@ -79,12 +82,12 @@ const Navbar = () => {
 										Register
 									</Link>
 								</li>
-							</ul>
-						</div>
-					)}
-				</ul>
-			</div>
-		</nav>
+							</Box>
+						)}
+					</ul>
+				</div>
+			</nav>
+		</Box>
 	);
 };
 

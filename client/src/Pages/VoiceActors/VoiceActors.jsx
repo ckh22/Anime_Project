@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 // Components
 import Message from '../../Components/Message/Message';
 import Loader from '../../Components/Loader/Loader';
-import Anime from './VoiceActor/VoiceActor';
+// import Anime from './VoiceActor/VoiceActor';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';

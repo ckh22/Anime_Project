@@ -13,6 +13,9 @@ import {
 	PROFILE_UPDATE_SUCCESS,
 	PROFILE_UPDATE_FAIL,
 	PROFILE_UPDATE_RESET,
+	PROFILE_USER_REQUEST,
+	PROFILE_USER_SUCCESS,
+	PROFILE_USER_FAIL,
 } from '../constants/profileConstants';
 
 export const profileListReducer = (state = { profiles: [] }, action) => {
@@ -38,6 +41,19 @@ export const profileDetailsReducer = (state = { profile: {} }, action) => {
 		case PROFILE_DETAILS_SUCCESS:
 			return { loading: false, profile: action.payload };
 		case PROFILE_DETAILS_FAIL:
+			return { loading: false, error: action.payload };
+		default:
+			return state;
+	}
+};
+
+export const userProfileReducer = (state = { profile: {} }, action) => {
+	switch (action.type) {
+		case PROFILE_USER_REQUEST:
+			return { ...state, loading: true };
+		case PROFILE_USER_SUCCESS:
+			return { loading: false, profile: action.payload };
+		case PROFILE_USER_FAIL:
 			return { loading: false, error: action.payload };
 		default:
 			return state;

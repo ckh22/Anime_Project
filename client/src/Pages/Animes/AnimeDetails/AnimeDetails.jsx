@@ -1,30 +1,20 @@
 // Dependencies Imports
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink, useHistory, useLocation } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 // Material-UI Core Imports
-import { makeStyles } from '@material-ui/core/styles';
-import {
-	Avatar,
-	Button,
-	Dialog,
-	TextField,
-	FormControlLabel,
-	Checkbox,
-	Grid,
-	Box,
-	Typography,
-} from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Link from '@material-ui/core/Link';
+// import { makeStyles } from '@material-ui/core/styles';
+import { Button } from '@material-ui/core';
+// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+// import FormControl from '@material-ui/core/FormControl';
+// import InputLabel from '@material-ui/core/InputLabel';
+// import OutlinedInput from '@material-ui/core/OutlinedInput';
+// import InputAdornment from '@material-ui/core/InputAdornment';
+// import IconButton from '@material-ui/core/IconButton';
+// import Visibility from '@material-ui/icons/Visibility';
+// import VisibilityOff from '@material-ui/icons/VisibilityOff';
+// import Link from '@material-ui/core/Link';
 
 // Components Imports
 // import Message from '../Message/Message';
@@ -40,7 +30,7 @@ const AnimeDetails = ({ match }) => {
 	const dispatch = useDispatch();
 
 	const animeDetail = useSelector((state) => state.animeDetail);
-	const { loading, error, anime } = animeDetail;
+	const { loading, anime } = animeDetail;
 
 	// Need to bring in userInfo when displaying the edit button
 	const userLogin = useSelector((state) => state.userLogin);
@@ -50,7 +40,7 @@ const AnimeDetails = ({ match }) => {
 		if (!anime._id || anime._id !== match.params.id) {
 			dispatch(listAnimeDetails(match.params.id));
 		}
-	}, [dispatch, , animeDetail, match, anime._id]);
+	}, [dispatch, animeDetail, match, anime]);
 
 	return (
 		<div className="main">

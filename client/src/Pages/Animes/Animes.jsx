@@ -1,23 +1,23 @@
-// Dependencies
+// Dependencies Imports
 import React, { useEffect } from 'react';
 
-// Redux
+// Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
 
 // Material UI Core
 // import {Grid, Paper} from '@material-ui/core';
 // import {makeStyles} from '@material-ui/core/styles';
 
-// Components
+// Components Imports
 import Message from '../../Components/Message/Message';
 import Loader from '../../Components/Loader/Loader';
 import AnimeCard from './AnimeCard/AnimeCard';
 import CarouselFormat from '../../Components/Carousel/CarouselFormat';
 
-// Actions
+// Actions Imports
 import { listAnimes } from '../../redux/actions/animeActions';
 
-// Styles
+// Styles Imports
 import './Animes.css';
 
 // const useStyles = makeStyles((theme) => ({

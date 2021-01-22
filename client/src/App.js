@@ -16,6 +16,7 @@ import Studios from './Pages/Studios/Studios';
 import VoiceActors from './Pages/VoiceActors/VoiceActors';
 import Profile from './Pages/Profile/Profile';
 import Profiles from './Pages/Profile/Profiles';
+import ProfileEdit from './Pages/Profile/Controllers/ProfileEdit/ProfileEdit';
 
 // Style
 import './App.css';
@@ -40,6 +41,7 @@ function App() {
 						<Route exact path="/voiceActors" component={VoiceActors} />
 						<Route exact path="/profile" component={Profile} />
 						<Route exact path="/profile/all" component={Profiles} />
+						<Route exact path="/profile/edit" component={ProfileEdit} />
 					</>
 				)}
 			/>

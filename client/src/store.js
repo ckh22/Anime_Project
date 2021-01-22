@@ -42,41 +42,56 @@ import {
 	profileDetailsReducer,
 	profileCreateReducer,
 	profileUpdateReducer,
+	userProfileReducer,
 } from './redux/reducers/profileReducers';
 
 // Reducers
 const reducer = combineReducers({
+	// User
 	userLogin: userLoginReducer,
 	userRegister: userRegisterReducer,
 	userList: userListReducer,
 	userDetails: userDetailsReducer,
-	userDelete: userDeleteReducer,
 	userUpdate: userUpdateReducer,
+	userDelete: userDeleteReducer,
+
+	// Anime
+	animeCreate: animeCreateReducer,
 	animeList: animeListReducer,
 	animeDetail: animeDetailsReducer,
-	animeCreate: animeCreateReducer,
 	animeUpdate: animeUpdateReducer,
 	animeDelete: animeDeleteReducer,
+
+	// Voice Actor
+	voiceActorCreate: voiceActorCreateReducer,
 	voiceActorList: voiceActorListReducer,
 	voiceActorDetail: voiceActorDetailsReducer,
-	voiceActorCreate: voiceActorCreateReducer,
 	voiceActorUpdate: voiceActorUpdateReducer,
 	voiceActorDelete: voiceActorDeleteReducer,
+
+	// Top Anime
+	topAnimeCreate: topAnimeCreateReducer,
 	topAnimeList: topAnimeListReducer,
 	topAnimeDetail: topAnimeDetailsReducer,
-	topAnimeCreate: topAnimeCreateReducer,
 	topAnimeUpdate: topAnimeUpdateReducer,
 	topAnimeDelete: topAnimeDeleteReducer,
+
+	// Profile
+	profileCreate: profileCreateReducer,
 	profileList: profileListReducer,
 	profileDetails: profileDetailsReducer,
-	profileCreate: profileCreateReducer,
-	profileUpdateReducer: profileUpdateReducer,
+	profileUpdate: profileUpdateReducer,
+	userProfile: userProfileReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
+const userProfileFromStorage = localStorage.getItem('userProfile')
+	? JSON.parse(localStorage.getItem('userProfile'))
+	: null;
 
 const initialState = {
 	userLogin: { userInfo: userInfoFromStorage },
+	userProfile: { userProfile: userProfileFromStorage },
 };
 
 const middleware = [thunk];
