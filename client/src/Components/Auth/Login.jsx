@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login';
 
 import clsx from 'clsx';
 
@@ -104,6 +105,11 @@ const Login = ({ location, history }) => {
 		// console.log('Redirection: ' + redirection);
 	};
 
+	// Google Auth
+	const handleLogin = async (googleData) => {
+		console.log(googleData);
+	};
+
 	// Material UI Core
 	const classes = useStyles();
 
@@ -171,7 +177,13 @@ const Login = ({ location, history }) => {
 								fullWidth
 							/>
 						</FormControl>
-
+						<GoogleLogin
+							clientId="706159074086-ajrloima8gpcci9rckinn8q3b0e3ebl3.apps.googleusercontent.com"
+							buttonText="Log in with Google"
+							onSuccess={handleLogin}
+							onFailure={handleLogin}
+							cookiePolicy={'single_host_origin'}
+						/>
 						<Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
 							Sign In
 						</Button>
