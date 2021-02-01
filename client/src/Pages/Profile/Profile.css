@@ -1,5 +1,28 @@
 .profile_container {
-	height: 91.3vh;
-	position: relative;
-	background: rgb(7, 7, 7);
+  height: 100vh;
+  background-color: darkblue;
 }
+
+.profile_container .profile_content {
+  background-color: #008b13;
+  text-align: center;
+  margin: 2em;
+  border: 1px dotted red;
+  border-radius: 1em;
+  -webkit-box-shadow: 0px 20px 40px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 20px 40px -10px rgba(0, 0, 0, 0.75);
+}
+
+.profile_container .profile_content form {
+  border: 1px dotted red;
+}
+
+.profile_container .profile_content form img {
+  width: 10em;
+  height: 10em;
+  border-radius: 100px;
+  background-color: #555555;
+  -webkit-box-shadow: 0px 20px 40px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 20px 40px -10px rgba(0, 0, 0, 0.75);
+}
+/*# sourceMappingURL=Profile.css.map */

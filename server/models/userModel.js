@@ -36,6 +36,10 @@ const userSchema = new Schema(
 			required: true,
 			default: false,
 		},
+		aniPoints: {
+			type: Number,
+			default: 0,
+		},
 	},
 	{
 		timestamps: true,

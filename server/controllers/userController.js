@@ -32,7 +32,7 @@ const authUser = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
 	const { firstName, lastName, userName, email, password } = req.body;
 
-	const userExists = (await User.findOne({ email })) && (await User.findOne({ userName }));
+	const userExists = (await User.findOne({ email })) && await (User.findOne({ userName }));
 
 	if (userExists) {
 		res.status(400);

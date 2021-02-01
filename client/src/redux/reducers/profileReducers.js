@@ -16,6 +16,9 @@ import {
 	PROFILE_USER_REQUEST,
 	PROFILE_USER_SUCCESS,
 	PROFILE_USER_FAIL,
+	PROFILE_USER_LOCATION_FAIL,
+	PROFILE_USER_LOCATION_SUCCESS,
+	PROFILE_USER_LOCATION_REQUEST,
 } from '../constants/profileConstants';
 
 export const profileListReducer = (state = { profiles: [] }, action) => {
@@ -85,6 +88,19 @@ export const profileUpdateReducer = (state = { profile: {} }, action) => {
 			return { loading: false, error: action.payload };
 		case PROFILE_UPDATE_RESET:
 			return { profile: {} };
+		default:
+			return state;
+	}
+};
+
+export const profileUserLocationReducer = (state = {}, action) => {
+	switch (action.type) {
+		case PROFILE_USER_LOCATION_REQUEST:
+			return { loading: true };
+		case PROFILE_USER_LOCATION_SUCCESS:
+			return { loading: false, success: true, location: action.payload };
+		case PROFILE_USER_LOCATION_FAIL:
+			return { loading: false, error: action.payload };
 		default:
 			return state;
 	}

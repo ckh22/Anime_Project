@@ -43,6 +43,7 @@ import {
 	profileCreateReducer,
 	profileUpdateReducer,
 	userProfileReducer,
+	profileUserLocationReducer,
 } from './redux/reducers/profileReducers';
 
 // Reducers
@@ -82,16 +83,17 @@ const reducer = combineReducers({
 	profileDetails: profileDetailsReducer,
 	profileUpdate: profileUpdateReducer,
 	userProfile: userProfileReducer,
+	profileUserLocation: profileUserLocationReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
-const userProfileFromStorage = localStorage.getItem('userProfile')
-	? JSON.parse(localStorage.getItem('userProfile'))
+const userProfileInfoFromStorage = localStorage.getItem('userProfileInfo')
+	? JSON.parse(localStorage.getItem('userProfileInfo'))
 	: null;
 
 const initialState = {
 	userLogin: { userInfo: userInfoFromStorage },
-	userProfile: { userProfile: userProfileFromStorage },
+	userProfile: { userProfileInfo: userProfileInfoFromStorage },
 };
 
 const middleware = [thunk];
