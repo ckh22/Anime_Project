@@ -101,12 +101,15 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -135,12 +138,15 @@ export const listUsers = () => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -169,12 +175,15 @@ export const deleteUser = (id) => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -200,13 +209,15 @@ export const updateUser = (user) => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 

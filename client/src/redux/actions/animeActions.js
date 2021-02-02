@@ -62,12 +62,14 @@ export const deleteAnime = (id) => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -95,13 +97,14 @@ export const createAnime = () => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
-		// Creating Anime should require authorization and a bearer token
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -130,13 +133,15 @@ export const updateAnime = (anime) => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 

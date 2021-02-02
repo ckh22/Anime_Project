@@ -11,8 +11,8 @@ import { protect } from '../middleware/authMiddleware.js';
 
 // Protect is used for protecting routes
 // Only users should be able to have, and interact with a profile
-router.route('/all').get(allUserProfiles);
-router.route('/').get(protect, getCurrentUserProfile).post(protect, createUserProfile).put(protect, updateUserProfile);
-router.route('/:id').get(getUserProfileById);
+router.route('/all').get(protect, allUserProfiles);
+router.route('/').get(protect, getCurrentUserProfile).post(protect, createUserProfile);
+router.route('/:id').get(protect, getUserProfileById).put(protect, updateUserProfile);
 
 export default router;

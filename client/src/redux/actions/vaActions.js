@@ -62,12 +62,15 @@ export const deleteVoiceActor = (id) => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -95,12 +98,15 @@ export const createVoiceActor = () => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -129,13 +135,15 @@ export const updateVoiceActor = (voiceActor) => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 

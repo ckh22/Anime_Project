@@ -41,7 +41,7 @@ function App() {
 						<Route exact path="/voiceActors" component={VoiceActors} />
 						<Route exact path="/profile" component={Profile} />
 						<Route exact path="/profile/all" component={Profiles} />
-						<Route exact path="/profile/edit" component={ProfileEdit} />
+						<Route exact path="/profile/:id" component={ProfileEdit} />
 					</>
 				)}
 			/>

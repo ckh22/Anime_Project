@@ -1,22 +1,21 @@
-// Dependencies
+// Dependencies Imports
 import React, { useEffect } from 'react';
 
-// Redux
+// Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
 
-// Material UI Core
-// import {Grid, Paper} from '@material-ui/core';
-// import {makeStyles} from '@material-ui/core/styles';
+// Material UI Core Imports
+import { Container } from '@material-ui/core';
+// import { makeStyles } from '@material-ui/core/styles';
 
-// Components
+// Components Imports
 import Message from '../../Components/Message/Message';
 import Loader from '../../Components/Loader/Loader';
 
-// Actions
+// Actions Imports
 import { listProfiles } from '../../redux/actions/profileActions';
 
-// Styles
-
+// Styles Imports
 const Profiles = ({ history }) => {
 	// Page number for pagination later on
 	// const pageNumber = match.params.pageNumber || 1;
@@ -36,9 +35,9 @@ const Profiles = ({ history }) => {
 	// Effect
 	useEffect(() => {
 		if (!userInfo) {
-			dispatch(listProfiles());
-		} else {
 			history.push('/login');
+		} else {
+			dispatch(listProfiles());
 		}
 	}, [dispatch, history, userInfo]);
 
@@ -51,13 +50,15 @@ const Profiles = ({ history }) => {
 				<Message variant="error">{error}</Message>
 			) : (
 				<>
-					<div className="profiles">
-						{profiles.length > 0 ? (
-							profiles.map((profile) => <div key={profile._id}>{profile.displayName}</div>)
-						) : (
-							<h4>No Profiles Found</h4>
-						)}
-					</div>
+					<Container>
+						<div className="profiles_container">
+							{profiles.length > 0 ? (
+								profiles.map((profile) => <div key={profile._id}>{profile.displayName}</div>)
+							) : (
+								<h4>No Profiles Found</h4>
+							)}
+						</div>
+					</Container>
 				</>
 			)}
 		</>

@@ -17,6 +17,7 @@ import {
 	PROFILE_USER_FAIL,
 	PROFILE_UPDATE_FAIL,
 	PROFILE_USER_LOCATION_FAIL,
+	PROFILE_DETAILS_FAIL,
 } from '../constants/profileConstants';
 import { logout } from './userActions';
 
@@ -27,13 +28,15 @@ export const currentUserProfile = () => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -56,23 +59,34 @@ export const currentUserProfile = () => async (dispatch, getState) => {
 };
 
 export const getUserProfileById = (id) => async (dispatch, getState) => {
-	dispatch({
-		type: PROFILE_DETAILS_REQUEST,
-	});
+	try {
+		dispatch({
+			type: PROFILE_DETAILS_REQUEST,
+		});
 
-	const {
-		userLogin: { userInfo },
-	} = getState();
-	const config = {
-		headers: {
-			Authorization: `Bearer ${userInfo.token}`,
-		},
-	};
-	const { data } = await axios.get(`/api/profile/${id}`, config);
-	dispatch({
-		type: PROFILE_DETAILS_SUCCESS,
-		payload: data,
-	});
+		const {
+			userLogin: {
+				userInfo: { createdUser },
+			},
+		} = getState();
+
+		const config = {
+			headers: {
+				Authorization: `Bearer ${createdUser.token}`,
+			},
+		};
+
+		const { data } = await axios.get(`/api/profile/${id}`, config);
+		dispatch({
+			type: PROFILE_DETAILS_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: PROFILE_DETAILS_FAIL,
+			payload: error.response && error.response.data.message ? error.response.data.message : error.message,
+		});
+	}
 };
 
 export const updateUserProfile = (profile) => async (dispatch, getState) => {
@@ -82,13 +96,15 @@ export const updateUserProfile = (profile) => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
-
+		
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -116,12 +132,14 @@ export const listProfiles = () => async (dispatch, getState) => {
 		dispatch({ type: PROFILE_LIST_REQUEST });
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -145,12 +163,15 @@ export const createUserProfile = () => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 

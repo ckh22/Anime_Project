@@ -8,7 +8,7 @@ import path from 'path';
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
 	// 1. find profile with req.user._id
 	const profile = await Profile.findOne({
-		user: req.user.id,
+		user: req.user._id,
 	}).populate('user', ['userName']);
 	// If profile exists
 	if (profile) {
@@ -23,7 +23,7 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
 // @route   GET /api/profile/:id
 // @access  Private
 const getUserProfileById = asyncHandler(async (req, res) => {
-	const profile = await Profile.findById(req.params._id);
+	const profile = await Profile.findById(req.params.id);
 	if (profile) {
 		res.json(profile);
 	} else {
@@ -36,24 +36,27 @@ const getUserProfileById = asyncHandler(async (req, res) => {
 // @route   PUT /api/users/profile
 // @access  Private
 const updateUserProfile = asyncHandler(async (req, res) => {
-	const profile = await Profile.findById(req.user._id);
-
-	if (profile) {
-		profile.biography = req.body.biography || profile.biography;
-		profile.location = req.body.location || profile.location;
-		profile.social.youtube = req.body.social.youtube || profile.social.youtube;
-		profile.social.twitter = req.body.social.twitter || profile.social.twitter;
-		profile.social.facebook = req.body.social.facebook || profile.social.facebook;
-		profile.social.instagram = req.body.social.instagram || profile.social.instagram;
-		profile.social.twitch = req.body.social.twitch || profile.social.twitch;
-		profile.social.website = req.body.social.website || profile.social.website;
-
+	try {
+		const profile = await Profile.findById(req.user._id);
+		if (profile) {
+			profile.biography = req.body.biography || profile.biography;
+			profile.location = req.body.location || profile.location;
+			profile.social.youtube = req.body.social.youtube || profile.social.youtube;
+			profile.social.twitter = req.body.social.twitter || profile.social.twitter;
+			profile.social.facebook = req.body.social.facebook || profile.social.facebook;
+			profile.social.instagram = req.body.social.instagram || profile.social.instagram;
+			profile.social.twitch = req.body.social.twitch || profile.social.twitch;
+			profile.social.website = req.body.social.website || profile.social.website;
+		} else {
+			res.status(404);
+			throw new Error('Profile not found');
+		}
 		const updatedProfile = await profile.save();
 
 		res.json({
 			updatedProfile,
 		});
-	} else {
+	} catch (error) {
 		res.status(404);
 		throw new Error('Profile not found');
 	}
@@ -83,7 +86,7 @@ const createUserProfile = asyncHandler(async (req, res) => {
 		const profile = new Profile({
 			user: req.user._id,
 			displayName: req.user.userName,
-			profileImage: '/images/sample.jpg',
+			profileImage: '/images/sample.png',
 			biography: 'Add a biography',
 			location: 'Pick a location',
 			social: {

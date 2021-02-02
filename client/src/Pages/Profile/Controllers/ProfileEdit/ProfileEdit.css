@@ -1,0 +1,45 @@
+.profile-edit_container {
+  height: 100vh;
+  background-color: darkblue;
+}
+
+.profile-edit_container .profile-edit_content {
+  background-color: #008b13;
+  text-align: center;
+  margin: 2em;
+  border: 1px dotted red;
+  border-radius: 1em;
+  -webkit-box-shadow: 0px 20px 40px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 20px 40px -10px rgba(0, 0, 0, 0.75);
+}
+
+.profile-edit_container .profile-edit_content .profile-edit_header {
+  background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20vw;
+  border: 1px dotted red;
+}
+
+.profile-edit_container .profile-edit_content .profile-edit_header img {
+  position: absolute;
+  top: -70%;
+  left: -200%;
+  -webkit-transform: translate(-200%, -50%);
+          transform: translate(-200%, -50%);
+  margin: 2em;
+  width: 10em;
+  height: 10em;
+  border-radius: 100px;
+  background-color: #555555;
+  -webkit-box-shadow: 0px 20px 40px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 20px 40px -10px rgba(0, 0, 0, 0.75);
+}
+/*# sourceMappingURL=ProfileEdit.css.map */

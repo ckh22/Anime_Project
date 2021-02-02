@@ -62,12 +62,14 @@ export const deleteTopAnime = (id) => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -95,12 +97,14 @@ export const createTopAnime = () => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
@@ -129,13 +133,15 @@ export const updateTopAnime = (anime) => async (dispatch, getState) => {
 		});
 
 		const {
-			userLogin: { userInfo },
+			userLogin: {
+				userInfo: { createdUser },
+			},
 		} = getState();
 
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${userInfo.token}`,
+				Authorization: `Bearer ${createdUser.token}`,
 			},
 		};
 
