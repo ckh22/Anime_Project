@@ -1,101 +1,34 @@
-nav {
-  height: 7.5vh;
+.navbar-container {
+  top: 0;
+  right: 100;
+  width: 300px;
+  height: 60px;
+  padding: 0 1rem;
+  background-color: 1px solid #474a4d;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: black;
 }
 
-.nav-container {
-  float: left;
-  width: 100%;
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+.navbar-container ul {
+  max-width: 100%;
+  height: 100%;
+  list-style: none;
 }
 
-.nav-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  white-space: nowrap;
-  list-style-type: none;
+.navbar-container ul li {
+  list-style: none;
 }
 
-.nav-link {
-  padding: 1em;
-}
-
-#links {
-  color: white;
-  position: relative;
-  overflow: hidden;
-  float: left;
-  display: block;
-  text-align: center;
-  padding: 14px 16px;
+.navbar-container ul li Link {
+  color: #dadce1;
   text-decoration: none;
-}
-
-.company-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: white;
-  white-space: nowrap;
-  padding: 1em;
-}
-
-.company-name {
-  padding: 1em;
-  font-weight: 600;
-}
-
-.logo {
-  padding: 1em 0.5em;
-}
-
-.btn-auth {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.menu {
-  color: white;
-  padding: 1em;
-}
-
-.menu_button {
-  color: white;
-}
-
-#links::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -20%;
-  left: 0;
-  background-color: #fff;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-#links:hover::before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  color: #4d4d4d;
+  font-size: 1em;
 }
 /*# sourceMappingURL=Navbar.css.map */

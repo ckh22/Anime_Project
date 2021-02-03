@@ -2,6 +2,8 @@ import asyncHandler from 'express-async-handler';
 import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
 import Profile from '../models/profileModel.js';
+import { createUserProfile } from './profileController.js';
+
 // @desc    Auth user & get token
 // @route   POST /api/users/login
 // @access  Public
@@ -29,16 +31,24 @@ const authUser = asyncHandler(async (req, res) => {
 // @desc    Register a new user
 // @route   POST /api/users
 // @access  Public
+// @note	Need to:
+// 1. Get all user data from frontend
+// 2. Check if the user exists using email and username
+// 2.1 If user exists, status 400 with error
+// 3. Initialize user & save user
+// 4. Initialize profile & save profile
+
 const registerUser = asyncHandler(async (req, res) => {
 	const { firstName, lastName, userName, email, password } = req.body;
 
-	const userExists = (await User.findOne({ email })) && await (User.findOne({ userName }));
+	const userExists = (await User.findOne({ email })) && (await User.findOne({ userName }));
 
 	if (userExists) {
 		res.status(400);
 		throw new Error('User already exists');
 	}
 
+	// Initialize User
 	const user = await User.create({
 		firstName,
 		lastName,
@@ -46,7 +56,11 @@ const registerUser = asyncHandler(async (req, res) => {
 		email,
 		password,
 	});
+
+	// Save User
 	const createdUser = await user.save();
+
+	// Initialize Profile
 	const profile = await Profile.create({
 		user: createdUser,
 		displayName: userName,
@@ -61,42 +75,45 @@ const registerUser = asyncHandler(async (req, res) => {
 			twitch: 'twitch.com',
 		},
 	});
+
+	// Save Profile
 	const createdProfile = await profile.save();
-	if (user) {
-		res.status(201).json({ createdUser, createdProfile });
+
+	if (user && profile) {
+		res.status(201).json(createdUser, createdProfile);
 	} else {
 		res.status(500);
 		throw new Error('Invalid user data');
 	}
 });
 
-// @desc    Update user profile
-// @route   PUT /api/users/profile
-// @access  Private
-const updateUserProfile = asyncHandler(async (req, res) => {
-	const user = await User.findById(req.user._id);
+// // @desc    Update user profile
+// // @route   PUT /api/users/profile
+// // @access  Private
+// const updateUserProfile = asyncHandler(async (req, res) => {
+// 	const user = await User.findById(req.user._id);
 
-	if (user) {
-		user.name = req.body.name || user.name;
-		user.email = req.body.email || user.email;
-		if (req.body.password) {
-			user.password = req.body.password;
-		}
+// 	if (user) {
+// 		user.name = req.body.name || user.name;
+// 		user.email = req.body.email || user.email;
+// 		if (req.body.password) {
+// 			user.password = req.body.password;
+// 		}
 
-		const updatedUser = await user.save();
+// 		const updatedUser = await user.save();
 
-		res.json({
-			_id: updatedUser._id,
-			name: updatedUser.name,
-			email: updatedUser.email,
-			isAdmin: updatedUser.isAdmin,
-			token: generateToken(updatedUser._id),
-		});
-	} else {
-		res.status(404);
-		throw new Error('User not found');
-	}
-});
+// 		res.json({
+// 			_id: updatedUser._id,
+// 			name: updatedUser.name,
+// 			email: updatedUser.email,
+// 			isAdmin: updatedUser.isAdmin,
+// 			token: generateToken(updatedUser._id),
+// 		});
+// 	} else {
+// 		res.status(404);
+// 		throw new Error('User not found');
+// 	}
+// });
 
 // @desc    Get all users
 // @route   GET /api/users

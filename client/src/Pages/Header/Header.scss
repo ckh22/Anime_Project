@@ -1,0 +1,54 @@
+.header-container {
+    display: flex;
+    height: 8vh;
+    width: 100%;
+    align-items: center;
+
+    header {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 40px 100px;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .header-container {
+            display: flex;
+
+            .header-logo {
+                cursor: pointer;
+                background-color: green;
+                padding: 1em 0.5em;
+            }
+
+            .header-company-name {
+                padding: 1em;
+                font-weight: 600;
+            }
+        }
+
+    }
+
+    .navbar {
+        width: 250px;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 100;
+    }
+
+    .navbar.active {
+        width: 250px;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 100;
+    }
+}

@@ -1,93 +1,94 @@
 // Dependencies Imports
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // React Burger Menu
 // https://github.com/negomi/react-burger-menu
 // import { slide as Slide } from 'react-burger-menu';
 
-// Material UI Core Imports
-import { Box } from '@material-ui/core';
-
 // Redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/actions/userActions';
 
 // Style
 import './scss/Navbar.css';
 
+//
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+function NavItem(props) {
+	return (
+		<li className="nav-item">
+			<a href="#" className="icon-button">
+				{props.icon}
+			</a>
+		</li>
+	);
+}
 const Navbar = () => {
+	// State
+	const [toggle, setToggle] = useState(false);
+
 	// Redux
+	const dispatch = useDispatch();
+
 	const userLogin = useSelector((state) => state.userLogin);
 
 	// Deconstructing userLogin data
 	const { userInfo } = userLogin;
-
+	const logoutHandler = () => {
+		dispatch(logout());
+	};
 	return (
-		<Box>
-			<nav>
-				<div className="nav-container">
-					<div className="company-info">
-						<div className="logo">logo</div>
-						<div className="company-name">AniTime</div>
-					</div>
-					<ul className="nav-links">
-						<li className="nav-link">
-							<Link to={`/`} id="links">
-								Home
-							</Link>
+		<>
+			<div className="navbar-container">
+				<nav>
+					<ul>
+						<li>
+							<Link to={`/`}>Home</Link>
 						</li>
-						<li className="nav-link">
-							<Link to={`/animes`} id="links">
-								Animes
-							</Link>
+						<li>
+							<Link to={`/animes`}>Animes</Link>
 						</li>
-						<li className="nav-link">
-							<Link to={`/studios`} id="links">
-								Studios
-							</Link>
+						<li>
+							<Link to={`/studios`}>Studios</Link>
 						</li>
-						<li className="nav-link">
-							<Link to={`/voiceActors`} id="links">
-								Voice Actors
-							</Link>
+						<li>
+							<Link to={`/voiceActors`}>Voice Actors</Link>
 						</li>
-
-						<li className="nav-link">
-							<Link to={`/donate`} id="links">
-								Want to help?
-							</Link>
+						<li>
+							<Link to={`/donate`}>Want to help?</Link>
 						</li>
 						{userInfo ? (
-							<Box>
-								<li className="nav-link">
-									<Link to={`/profile`} id="links">
-										Profile
-									</Link>
+							<div>
+								<li>
+									<Link to={`/profile`}>Profile</Link>
 								</li>
 								<li>
-									<Link to={`/account`} id="links">
+									<Link to={`/account`}>My Account</Link>
+								</li>
+								<li>
+									<Link to={`/logout`} onClick={logoutHandler}>
 										My Account
 									</Link>
 								</li>
-							</Box>
+							</div>
 						) : (
-							<Box>
-								<li className="nav-link">
-									<Link to="/login" id="links">
-										Login
-									</Link>
+							<div>
+								<li>
+									<Link to="/login">Login</Link>
 								</li>
-								<li className="nav-link">
+								<li>
 									<Link to="/register" id="links">
 										Register
 									</Link>
 								</li>
-							</Box>
+							</div>
 						)}
 					</ul>
-				</div>
-			</nav>
-		</Box>
+				</nav>
+			</div>
+		</>
 	);
 };
 

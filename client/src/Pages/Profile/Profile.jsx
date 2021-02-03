@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Profile = ({ match, history }) => {
+	const profileId = match.params.id;
 	// const profileId = match.params.id;
 	const [displayName, setDisplayName] = useState('');
 	const [profileImage, setProfileImage] = useState('');
@@ -55,7 +56,9 @@ const Profile = ({ match, history }) => {
 		if (!userInfo) {
 			history.push('/');
 		} else {
-			console.log('lol')
+			if (!profile || profile.id !== profileId) {
+				getUserProfileById(profileId);
+			}
 		}
 	}, [dispatch, history, profile, userInfo, match]);
 

@@ -2,6 +2,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+// FONTAWESOME!
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+
 // Pages
 import AnimeDetails from './Pages/Animes/AnimeDetails/AnimeDetails';
 import Animes from './Pages/Animes/Animes';
@@ -9,7 +14,7 @@ import Characters from './Pages/Characters/Characters';
 import Donate from './Pages/Donate/Donate';
 import EditAnime from './Pages/Animes/Controllers/EditAnime/EditAnime';
 import Homepage from './Pages/Homepage/Homepage';
-import Navbar from './Components/Navbar/Navbar';
+import Header from './Pages/Header/Header';
 import Login from './Components/Auth/Login';
 import Register from './Components/Auth/Register';
 import Studios from './Pages/Studios/Studios';
@@ -21,10 +26,13 @@ import ProfileEdit from './Pages/Profile/Controllers/ProfileEdit/ProfileEdit';
 // Style
 import './App.css';
 
+// FONTAWESOME!
+library.add(fab, faCheckSquare, faCoffee)
+
 function App() {
 	return (
 		<div className="App">
-			<Navbar />
+			<Header />
 			<Route exact path="/" component={Homepage} />
 			<Route
 				path={'/(.+)'}

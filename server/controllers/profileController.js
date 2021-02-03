@@ -37,7 +37,7 @@ const getUserProfileById = asyncHandler(async (req, res) => {
 // @access  Private
 const updateUserProfile = asyncHandler(async (req, res) => {
 	try {
-		const profile = await Profile.findById(req.user._id);
+		const profile = await Profile.findById({ user: req.user.id });
 		if (profile) {
 			profile.biography = req.body.biography || profile.biography;
 			profile.location = req.body.location || profile.location;

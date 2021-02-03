@@ -34,6 +34,7 @@ export default function Homepage() {
 
 								<div className="vote-area">
 									<div className="grid-area">
+										
 										<p>
 											Lorem ipsum dolor sit amet, id sed assum maluisset. Ut ius omnesque
 											electram. Natum quando et nam, moderatius vituperata mea ad, at sea labitur
@@ -55,8 +56,8 @@ export default function Homepage() {
 											<div> {topAnime.title} </div>
 											<Card
 												raised={true}
-                                                className="cards"
-                                                key={topAnime._id}
+												className="cards"
+												key={topAnime._id}
 												style={{
 													backgroundImage: `url(${topAnime.image_url})`,
 													backgroundRepeat: 'no-repeat',
