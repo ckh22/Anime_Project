@@ -25,6 +25,7 @@ import ProfileEdit from './Pages/Profile/Controllers/ProfileEdit/ProfileEdit';
 
 // Style
 import './App.css';
+import AnimeForm from './Components/Form/AnimeForm';
 
 // FONTAWESOME!
 library.add(fab, faCheckSquare, faCoffee)
@@ -39,6 +40,7 @@ function App() {
 				render={() => (
 					<>
 						<Route exact path="/anime/:id" component={AnimeDetails} />
+						<Route exact path='/anime/:id/edit' component={AnimeForm} />
 						<Route exact path="/animes" component={Animes} />
 						<Route exact path="/characters" component={Characters} />
 						<Route exact path="/donate" component={Donate} />

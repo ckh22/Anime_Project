@@ -1,5 +1,5 @@
 // Dependencies Imports
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -27,6 +27,7 @@ import './AnimeDetails.css';
 import { listAnimeDetails } from '../../../redux/actions/animeActions';
 
 const AnimeDetails = ({ match }) => {
+	const [open, setOpen] = useState(false)
 	const dispatch = useDispatch();
 
 	const animeDetail = useSelector((state) => state.animeDetail);
