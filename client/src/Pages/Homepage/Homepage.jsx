@@ -7,6 +7,7 @@ import { listTopAnimes } from '../../redux/actions/topAnimesActions';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../Components/Loader/Loader';
 import Message from '../../Components/Message/Message';
+import {Link} from 'react-router-dom'
 
 export default function Homepage() {
 	const dispatch = useDispatch();
@@ -40,9 +41,11 @@ export default function Homepage() {
 											electram. Natum quando et nam, moderatius vituperata mea ad, at sea labitur
 											consequat.
 										</p>
-										<Button color="primary" size="large">
-											Vote Now!
-										</Button>
+											<Link to='/animes'>
+												<Button color="primary" size="large" >
+													Vote Now!
+												</Button>
+											</Link>
 									</div>
 								</div>
 							</div>
